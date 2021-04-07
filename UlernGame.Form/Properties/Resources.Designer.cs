@@ -45,7 +45,7 @@ namespace UlernGame.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("UlernGame.Properties.Resources",
+                        new global::System.Resources.ResourceManager("UlernGame.Form.Properties.Resources",
                             typeof(Resources).Assembly);
                     resourceMan = temp;
                 }

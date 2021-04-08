@@ -1,15 +1,13 @@
 ﻿namespace UlernGame.Model
 {
-    public class Bullet
+    public class Bullet : GameObject
     {
-        public readonly int bulletSpeed = 100;
-        public int PosX { get; }
-        public int PosY { get; }
+        public int bulletSpeed = 100;
 
         public Bullet(Player player)
         {
-            PosX = player.PosX;
-            PosY = player.PosY;
+            posX = player.posX;
+            posY = player.posY;
         }
 
         public void Destroy()

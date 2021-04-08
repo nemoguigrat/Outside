@@ -2,12 +2,26 @@
 {
     public class Monster : Entity
     {
-        public int Damage { get; set; }
+        public readonly int damage;
 
-        public Monster(int hp, int speed, int damage, int x, int y = default) : base(hp, speed, x, y)
+        public Monster(int hp, int speed, int damage)
         {
-            Damage = damage;
+            maxHeals = hp;
+            heals = hp;
+            this.speed = speed;
+            this.damage = damage;
         }
+        
+        public Monster(int hp, int speed, int damage, int x, int y)
+        {
+            maxHeals = hp;
+            heals = hp;
+            this.speed = speed;
+            posX = x;
+            posY = y;
+            this.damage = damage;
+        }
+        
         
     }
 }

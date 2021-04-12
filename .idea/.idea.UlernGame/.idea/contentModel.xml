@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\sharo\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\sharo\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_UlernGame.-2135166952.00" t="ExcludeRecursive" />
+    <e p="D:\NewSol\ulern\UlernGame" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="UlernGame.Form" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controller" t="Include" />
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="images" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="UlernGame.Form.csproj" t="IncludeRecursive" />
+        <e p="View" t="Include">
+          <e p="Sprite.cs" t="Include" />
+          <e p="View.cs" t="Include" />
+        </e>
+      </e>
+      <e p="UlernGame.Model" t="IncludeRecursive">
+        <e p="AmmunitionCrate.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Bullet.cs" t="Include" />
+        <e p="Door.cs" t="Include" />
+        <e p="Entity.cs" t="Include" />
+        <e p="GameObject.cs" t="Include" />
+        <e p="Map.cs" t="Include" />
+        <e p="MapObj.cs" t="Include" />
+        <e p="Medkit.cs" t="Include" />
+        <e p="Monster.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Obstacle.cs" t="Include" />
+        <e p="Player.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Thorn.cs" t="Include" />
+        <e p="UlernGame.Model.csproj" t="IncludeRecursive" />
+        <e p="Wall.cs" t="Include" />
+      </e>
+      <e p="UlernGame.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

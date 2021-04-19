@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-
+﻿
 namespace UlernGame.Model
 {
     public class GameObject
@@ -7,7 +6,9 @@ namespace UlernGame.Model
         public bool collision;
         public int posX;
         public int posY;
-        public int hitX;
-        public int hitY;
+        public GameObject()
+        {
+            
+        }
     }
 }

@@ -14,18 +14,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7612168-9f11-418c-b1fb-1225f5922386" name="Default Changelist" comment="Create new classes">
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/View/Sprite.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/View/View.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/images/ammo-Image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/images/dead.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/images/medkit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UlernGame.Form/images/zright.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Form/UlernGame.Form.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Form/UlernGame.Form.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Model/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/Obstacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/Player.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Model/Outside.Model.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Model/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Tests/Outside.Tests.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Tests/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Tests/Tests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside.Tests/packages.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Outside/MyForm.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UlernGame.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/App.config" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/App.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/MyForm.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Form1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Properties/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Properties/Resources.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Properties/Resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Properties/Resources.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Properties/Settings.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Properties/Settings.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/Properties/Settings.settings" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Properties/Settings.settings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/UlernGame.Form.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Outside.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/View/Sprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/View/Sprite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/View/View.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/View/View.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/ammo-Image.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/ammo-Image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/dead.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/dead.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/medkit.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/medkit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-idle.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-idle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_11.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_14.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/survivor-reload_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/survivor-reload_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Form/images/zright.png" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/images/zright.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/AmmunitionCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/AmmunitionCrate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Bullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Door.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/GameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/MapObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/MapObj.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Medkit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Medkit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Thorn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Thorn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/UlernGame.Model.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.Model/UlernGame.Model.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.Model/Wall.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Wall.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UlernGame.sln" beforeDir="false" afterPath="$PROJECT_DIR$/UlernGame.sln" afterDir="false" />
     </list>
     <list id="47ea1343-5082-4d6b-ab6c-4606c3e6e58b" name="Add images" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +88,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/UlernGame.Form/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/13DBC815-33D8-4EDC-819A-C50A274C0735/06/18446b62/PictureBox.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/UlernGame.Form/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside/View/Sprite.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/MapObj.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/Map.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/AmmunitionCrate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/Bullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/Medkit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/Door.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside.Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Outside/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -65,12 +120,25 @@
         <option value="$PROJECT_DIR$/UlernGame.Model/MapObj.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Model/Map.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Model/Obstacle.cs" />
-        <option value="$PROJECT_DIR$/UlernGame.Model/GameObject.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Form/View/View.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Form/View/Sprite.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Model/Player.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Model/Entity.cs" />
         <option value="$PROJECT_DIR$/UlernGame.Model/Monster.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.Form/name.resx" />
+        <option value="$PROJECT_DIR$/UlernGame.Model/GameObject.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.Form/Model/GameObject.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.Form/Model/AmmunitionCrate.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.Form/Model/Player.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.Form/Model/Bullet.cs" />
+        <option value="$PROJECT_DIR$/UlernGame.sln" />
+        <option value="$PROJECT_DIR$/Outside.Model/Class1.cs" />
+        <option value="$PROJECT_DIR$/Outside.Model/AmmunitionCrate.cs" />
+        <option value="$PROJECT_DIR$/Outside.Model/GameObject.cs" />
+        <option value="$PROJECT_DIR$/Outside.Model/Player.cs" />
+        <option value="$PROJECT_DIR$/Outside/MyForm.cs" />
+        <option value="$PROJECT_DIR$/Outside/Program.cs" />
+        <option value="$PROJECT_DIR$/Outside.Tests/Tests.cs" />
       </list>
     </option>
   </component>
@@ -101,7 +169,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/UlernGame.Form/UlernGame.Form.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Outside/Outside.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -131,7 +199,12 @@
       <workItem from="1617823528349" duration="2416000" />
       <workItem from="1617865553961" duration="251000" />
       <workItem from="1617866297122" duration="4828000" />
-      <workItem from="1618134584251" duration="9036000" />
+      <workItem from="1618134584251" duration="12091000" />
+      <workItem from="1618201956487" duration="2801000" />
+      <workItem from="1618286528462" duration="124000" />
+      <workItem from="1618560241439" duration="1155000" />
+      <workItem from="1618561673705" duration="241000" />
+      <workItem from="1618810069181" duration="1605000" />
     </task>
     <task id="LOCAL-00001" summary="Create project">
       <created>1616952649320</created>
@@ -168,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617870993483</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="New images and update view">
+      <created>1618147856276</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618147856276</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,25 +275,26 @@
     <MESSAGE value="Add images" />
     <MESSAGE value="Entity classes" />
     <MESSAGE value="Create new classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create new classes" />
+    <MESSAGE value="New images and update view" />
+    <option name="LAST_COMMIT_MESSAGE" value="New images and update view" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="288" key="GridCell.Tab.0.bottom" timestamp="1617187386217">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1618205002659">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="288" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1617187386217" />
-    <state width="1493" height="288" key="GridCell.Tab.0.center" timestamp="1617187386217">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1618205002659" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1618205002658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="288" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1617187386217" />
-    <state width="1493" height="288" key="GridCell.Tab.0.left" timestamp="1617187386217">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1618205002658" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1618205002658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="288" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1617187386217" />
-    <state width="1493" height="288" key="GridCell.Tab.0.right" timestamp="1617187386217">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1618205002658" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1618205002658">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="288" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1617187386217" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1618205002658" />
     <state width="1493" height="288" key="GridCell.Tab.1.bottom" timestamp="1617187386217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -278,10 +359,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="288" key="GridCell.Tab.4.right/0.0.1536.824@0.0.1536.824" timestamp="1617187386217" />
-    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size" timestamp="1617823971703">
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size" timestamp="1618810427901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1617823971703" />
+    <state x="361" y="144" key="Rider.ProjectTemplateDialog.Size/0.0.1536.824@0.0.1536.824" timestamp="1618810427901" />
     <state x="479" y="102" key="RiderGenerateDialog" timestamp="1617685357218">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -298,10 +379,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="VCS.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1617867021229" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617871134871">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1618147877151">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1617871134871" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1618147877151" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617128902578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

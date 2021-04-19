@@ -1,9 +1,10 @@
-﻿namespace UlernGame.Model
+﻿using System.Numerics;
+
+namespace UlernGame.Model
 {
     public class Bullet : GameObject
     {
         public int bulletSpeed = 100;
-
         public Bullet(Player player)
         {
             posX = player.posX;
@@ -12,7 +13,7 @@
 
         public void Destroy()
         {
-            
+            // при соприкосновении с объектом, пуля уничтожится
         }
     }
 }

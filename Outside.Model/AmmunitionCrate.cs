@@ -1,4 +1,6 @@
-﻿namespace UlernGame.Model
+﻿
+
+namespace UlernGame.Model
 {
     public class AmmunitionCrate : GameObject
     {

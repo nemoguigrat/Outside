@@ -1,11 +1,13 @@
-﻿namespace UlernGame.Model
+﻿using System.Drawing;
+
+namespace UlernGame.Model
 {
     public class Wall : Obstacle
     {
         public Wall(int x, int y)
         {
-            posX = x;
-            posY = y;
+            X = x;
+            Y = y;
         }
     }
 }

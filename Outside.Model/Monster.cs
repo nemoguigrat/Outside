@@ -1,17 +1,16 @@
-﻿namespace UlernGame.Model
-{
-    public class Monster : Entity
-    {
-        public readonly int damage;
+﻿using System.Drawing;
 
-        public Monster(int hp, int speed, int damage, int x, int y)
+namespace UlernGame.Model
+{
+    public class Monster : GameObject
+    {
+        public readonly int damage = 20;
+        public readonly int speed = 10;
+
+        public Monster(int x, int y, Player player)
         {
-            maxHeals = hp;
-            heals = hp;
-            this.speed = speed;
-            posX = x;
-            posY = y;
-            this.damage = damage;
+            X = x;
+            Y = y;
         }
         
         

@@ -1,4 +1,6 @@
-﻿namespace UlernGame.Model
+﻿using System.Drawing;
+
+namespace UlernGame.Model
 {
     public class Medkit : GameObject
     {
@@ -6,8 +8,8 @@
 
         public Medkit(int x, int y)
         {
-            posX = x;
-            posY = y;
+            X = x;
+            Y = y;
         }
     }
 }

@@ -7,8 +7,8 @@ namespace UlernGame.Model
         public int bulletSpeed = 100;
         public Bullet(Player player)
         {
-            posX = player.posX;
-            posY = player.posY;
+            X = player.X;
+            Y = player.Y;
         }
 
         public void Destroy()

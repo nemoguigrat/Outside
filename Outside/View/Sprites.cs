@@ -9,6 +9,7 @@ namespace UlernGame.View
         public Dictionary<string, Image> Player { get; }
         public Dictionary<string, Image> Monster { get; }
         public Image Wall { get; }
+        // public Bitmap Bullet { get; }
 
         public Sprites()
         {

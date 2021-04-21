@@ -4,7 +4,7 @@ namespace UlernGame.Model
 {
     public class Thorn : Obstacle
     {
-        public readonly int damage = 10;
+        public const int damage = 10;
 
         public Thorn(int x, int y)
         {

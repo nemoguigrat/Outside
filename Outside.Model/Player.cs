@@ -6,17 +6,20 @@ namespace UlernGame.Model
 {
     public class Player : GameObject
     {
-        public readonly int damage = 3;
-        private readonly int maxAmmunition = 120;
-        private readonly int fullMagazine = 15;
-        private readonly int maxHeals = 100;
-        private readonly int speed = 10;
+        public const int damage = 3;
+        private const int maxAmmunition = 120;
+        private const int fullMagazine = 15;
+        private const int maxHeals = 100;
+        private const int speed = 10;
+        public const int width = 75;
+        public const int height = 66;
         public int Ammunition { get; private set; }
         public int Magazine { get; private set; }
-        public PlayerDirection Direction { get; private set; }
+        public Directions Direction { get; private set; }
         
         public int Damage { get; }
         public int Heals { get; private set; }
+        
 
 
         public Player(int x, int y)
@@ -26,6 +29,7 @@ namespace UlernGame.Model
             Y = y;
             Magazine = fullMagazine;
             Ammunition = maxAmmunition;
+            Damage = 10;
         }
 
         public void Reload()
@@ -38,28 +42,31 @@ namespace UlernGame.Model
 
         public void Shoot()
         {
+            if (Magazine <= 0) return;
+            var bullet = new Bullet(this);
+            
             
         }
 
-        public void Move(Keys key)
+        public void PlayerAction(Keys key)
         {
             switch (key)
             {
                 case Keys.A:
                     X -= speed;
-                    Direction = PlayerDirection.Left;
+                    Direction = Directions.Left;
                     break;
                 case Keys.D:
                     X += speed;
-                    Direction = PlayerDirection.Right;
+                    Direction = Directions.Right;
                     break;
                 case Keys.W:
                     Y -= speed;
-                    Direction = PlayerDirection.Up;
+                    Direction = Directions.Up;
                     break;
                 case Keys.S:
                     Y += speed;
-                    Direction = PlayerDirection.Down;
+                    Direction = Directions.Down;
                     break;
                 case Keys.Space:
                     Shoot();

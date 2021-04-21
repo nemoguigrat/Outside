@@ -1,6 +1,6 @@
 ﻿namespace UlernGame.Model
 {
-    public enum PlayerDirection
+    public enum Directions
     {
         Up,
         Down,

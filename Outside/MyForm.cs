@@ -18,19 +18,34 @@ namespace UlernGame
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             game = new Game();
+            var timer = new Timer();
+            timer.Interval = 20;
+            timer.Tick += TimerTick;
+            timer.Start();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            Invalidate();
         }
 
         protected override void OnKeyDown(KeyEventArgs key)
         {
-            game.Player.Move(key.KeyData);
+            game.Player.PlayerAction(key.KeyData);
             game.KeyPressed = key.KeyData;
+            
         }
 
         protected override void OnPaint(PaintEventArgs g)
         {
             var a = game.Player.Direction;
             g.Graphics.DrawImage(sprites.Player[a.ToString()], game.Player.X, game.Player.Y);
-            Invalidate();
+            g.Graphics.DrawImage(sprites.Monster["Up"], game.Monsters[0].X, game.Monsters[0].Y);
+        }
+
+        private void DrawBullet(PaintEventArgs g)
+        {
+            
         }
         
     }

@@ -44,12 +44,13 @@
         <Compile Include="Bullet.cs" />
         <Compile Include="Door.cs" />
         <Compile Include="GameObject.cs" />
-        <Compile Include="Map.cs" />
+        <Compile Include="MapCreator.cs" />
+        <Compile Include="MapPoint.cs" />
         <Compile Include="Medkit.cs" />
         <Compile Include="Monster.cs" />
         <Compile Include="Obstacle.cs" />
         <Compile Include="Player.cs" />
-        <Compile Include="PlayerDirection.cs" />
+        <Compile Include="Directions.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Thorn.cs" />
         <Compile Include="Wall.cs" />

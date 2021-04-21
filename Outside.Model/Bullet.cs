@@ -4,11 +4,13 @@ namespace UlernGame.Model
 {
     public class Bullet : GameObject
     {
-        public int bulletSpeed = 100;
+        public const int speed = 100;
+        public Directions Direction { get; }
         public Bullet(Player player)
         {
             X = player.X;
             Y = player.Y;
+            Direction = player.Direction;
         }
 
         public void Destroy()

@@ -47,7 +47,6 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Game.cs" />
         <Compile Include="MyForm.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -57,7 +56,6 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="View\Sprites.cs" />
-        <Compile Include="View\Objects.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
@@ -112,6 +110,11 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Controller" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\wall.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

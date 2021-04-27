@@ -8,7 +8,6 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controller" t="Include" />
-        <e p="Game.cs" t="Include" />
         <e p="MyForm.cs" t="Include" />
         <e p="MyForm.Designer.cs" t="Include" />
         <e p="MyForm.resx" t="Include" />
@@ -26,13 +25,13 @@
           <e p="survivorLeft.png" t="Include" />
           <e p="survivorRight.png" t="Include" />
           <e p="survivorUp.png" t="Include" />
+          <e p="wall.png" t="Include" />
           <e p="zombieDown.png" t="Include" />
           <e p="zombieLeft.png" t="Include" />
           <e p="zombieRight.png" t="Include" />
           <e p="zombieUp.png" t="Include" />
         </e>
         <e p="View" t="Include">
-          <e p="Objects.cs" t="Include" />
           <e p="Sprites.cs" t="Include" />
         </e>
       </e>
@@ -40,16 +39,19 @@
         <e p="AmmunitionCrate.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Bullet.cs" t="Include" />
+        <e p="Directions.cs" t="Include" />
         <e p="Door.cs" t="Include" />
+        <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />
-        <e p="Map.cs" t="Include" />
+        <e p="MapCreator.cs" t="Include" />
+        <e p="MapPoint.cs" t="Include" />
         <e p="Medkit.cs" t="Include" />
         <e p="Monster.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="Objects.cs" t="Include" />
         <e p="Obstacle.cs" t="Include" />
         <e p="Outside.Model.csproj" t="IncludeRecursive" />
         <e p="Player.cs" t="Include" />
-        <e p="PlayerDirection.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>

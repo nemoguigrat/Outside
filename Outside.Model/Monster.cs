@@ -18,6 +18,11 @@ namespace UlernGame.Model
             Hitbox = new Rectangle(new Point(0,0), new Size(50,50));
             this.gameModel = gameModel;
         }
+
+        public void ReserveDamage()
+        {
+            gameModel.Monsters.Remove(this);
+        }
         
         //алгоритм движения и нахождения игрокка будет переработан (возможно через обход в ширину)
         public void MoveTo(int playerX, int playerY)

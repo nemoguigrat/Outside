@@ -13,11 +13,6 @@ namespace UlernGame.Model
             Direction = player.Direction;
         }
 
-        public void Destroy()
-        {
-            // при соприкосновении с объектом, пуля уничтожится
-        }
-
         public void Move()
         {
             switch (Direction)

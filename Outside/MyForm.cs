@@ -38,10 +38,17 @@ namespace UlernGame
         {
             game.Monsters.ForEach(x => x.MoveTo(game.Player.X, game.Player.Y));
             game.Bullets.ForEach(x => x.Move());
+            if (game.Bullets.Count > 0)
+                game.BulletCollision();
             Invalidate();
         }
 
         protected override void OnKeyDown(KeyEventArgs key)
+        {
+            game.Player.PlayerMove(key.KeyData);
+        }
+
+        protected override void OnKeyUp(KeyEventArgs key)
         {
             game.Player.PlayerAction(key.KeyData);
         }
@@ -54,7 +61,7 @@ namespace UlernGame
             DrawMonster(graphic);
             graphic.FillRectangle(Brushes.PaleGreen, 
                 new Rectangle(20, 20, game.Player.Heals * 5, 20));
-            DrawBullet(graphic);
+            DrawBullets(graphic);
             
         }
         void DrawMap(Graphics gr)
@@ -75,15 +82,15 @@ namespace UlernGame
 
         private void DrawMonster(Graphics gr)
         {
-            gr.DrawImage(sprites.Monster[game.Monsters[0].Direction.ToString()], game.Monsters[0].X, game.Monsters[0].Y);
-            gr.DrawImage(sprites.Monster[game.Monsters[1].Direction.ToString()], game.Monsters[1].X, game.Monsters[1].Y);
-            gr.DrawImage(sprites.Monster[game.Monsters[2].Direction.ToString()], game.Monsters[2].X, game.Monsters[2].Y);
+            for (var i = 0; i < game.Monsters.Count; i++)
+                gr.DrawImage(sprites.Monster[game.Monsters[i].Direction.ToString()], game.Monsters[i].X, game.Monsters[i].Y);
+            
         }
-        private void DrawBullet(Graphics g)
+        private void DrawBullets(Graphics g)
         {
             foreach (var bullet in game.Bullets)
             {
-                g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 5,5);
+                g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 6,6);
             }
         }
         

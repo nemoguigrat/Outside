@@ -56,6 +56,33 @@ namespace UlernGame
             }
             return false;
         }
+        
+        public Monster CheckCollisionWithBullet(Bullet bullet)
+        {
+            foreach (var monster in Monsters)
+            {
+                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Hitbox.Width &&
+                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Hitbox.Height)
+                    return monster;
+            }
+            return null;
+        }
+
+        public void BulletCollision()
+        {
+            for (var i = 0; i < Bullets.Count; i++)
+            {
+                if (CheckCollisionWithObstacle(Bullets[i].X, Bullets[i].Y, 0, 0))
+                    Bullets.Remove(Bullets[i]);
+                var monsterToDamage = CheckCollisionWithBullet(Bullets[i]);
+                if (monsterToDamage != null)
+                {
+                    monsterToDamage.ReserveDamage();
+                    Bullets.Remove(Bullets[i]);
+                }
+
+            }
+        }
 
         // public void FindPathToPlayer(int playerX, int playerY)
         // {

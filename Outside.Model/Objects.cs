@@ -1,4 +1,4 @@
-﻿namespace UlernGame.View
+﻿namespace UlernGame
 {
     public enum Objects
     {
@@ -9,6 +9,7 @@
         Monster,
         Player,
         Thorn,
-        Wall
+        Wall,
+        Floor
     }
 }

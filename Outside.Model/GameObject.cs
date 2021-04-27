@@ -5,8 +5,8 @@ namespace UlernGame.Model
 {
     public class GameObject
     {
-        public bool collision;
         public int X { get; protected set; }
         public int Y { get; protected set; }
+        public Rectangle Hitbox { get; protected set; }
     }
 }

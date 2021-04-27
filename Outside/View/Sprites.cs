@@ -15,6 +15,7 @@ namespace UlernGame.View
         {
             Player = LoadImagesEntity("survivor");
             Monster = LoadImagesEntity("zombie");
+            Wall = LoadImage("wall");
         }
 
         private Dictionary<string, Image> LoadImagesEntity(string file)
@@ -23,12 +24,13 @@ namespace UlernGame.View
             var directions = new[] {"Up", "Down", "Left", "Right"};
             foreach (var direction in directions)
             {
-                result[direction] = Image.FromFile("Resources/" + $"{file}{direction}.png");
+                result[direction] = new Bitmap(Image.FromFile("Resources/" + $"{file}{direction}.png"), 
+                    new Size(50,50));
             }
 
             return result;
         }
 
-        private Image LoadImage(string file) => Image.FromFile("Resources/" + file);
+        private Image LoadImage(string file) => Image.FromFile("Resources/" + file + ".png");
     }
 }

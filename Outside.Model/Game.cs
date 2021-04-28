@@ -27,11 +27,13 @@ namespace UlernGame
             SpawnMonsters();
         }
 
-        private void SpawnMonsters()
+        public void SpawnMonsters()
         {
-            Monsters.Add(new Monster(100, 100, this));
-            Monsters.Add(new Monster(200, 100, this));
-            Monsters.Add(new Monster(400, 100, this));
+            var rnd = new Random();
+            var x = rnd.Next(Map.MapWidth - 1);
+            var y = rnd.Next(Map.MapHeight - 1);
+            if (Map.Objects[y,x] == null)
+                Monsters.Add(new Monster(x * 80,y * 80, this));
         }
         public bool CheckCollisionWithObstacle(int objX, int objY, int height, int width)
         {
@@ -73,11 +75,14 @@ namespace UlernGame
             for (var i = 0; i < Bullets.Count; i++)
             {
                 if (CheckCollisionWithObstacle(Bullets[i].X, Bullets[i].Y, 0, 0))
+                {
                     Bullets.Remove(Bullets[i]);
+                    break;
+                }
                 var monsterToDamage = CheckCollisionWithBullet(Bullets[i]);
                 if (monsterToDamage != null)
                 {
-                    monsterToDamage.ReserveDamage();
+                    monsterToDamage.Die();
                     Bullets.Remove(Bullets[i]);
                 }
 

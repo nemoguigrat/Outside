@@ -19,7 +19,7 @@ namespace UlernGame.Model
             this.gameModel = gameModel;
         }
 
-        public void ReserveDamage()
+        public void Die()
         {
             gameModel.Monsters.Remove(this);
         }

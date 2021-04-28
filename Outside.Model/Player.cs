@@ -51,7 +51,7 @@ namespace UlernGame.Model
         {
             if (Magazine <= 0) return;
             gameModel.Bullets.Add(new Bullet(this));
-            
+            Magazine--;
         }
         public void PlayerMove(Keys key)
         {

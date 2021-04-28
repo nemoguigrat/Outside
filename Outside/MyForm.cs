@@ -21,6 +21,15 @@ namespace UlernGame
             game = new Game();
             game.StartGame();
             var timer = new Timer();
+            timer.Interval = 20;
+            timer.Tick += TimerTick;
+            timer.Start();
+            DamageTimerTick();
+            MonsterTimerTick();
+        }
+
+        private void DamageTimerTick()
+        {
             var damageTimer = new Timer();
             damageTimer.Interval = 500;
             damageTimer.Tick += (sender, arg) =>
@@ -29,15 +38,21 @@ namespace UlernGame
                     game.Player.ReserveDamage(Monster.damage);
             };
             damageTimer.Start();
-            timer.Interval = 20;
-            timer.Tick += TimerTick;
-            timer.Start();
         }
 
+        private void MonsterTimerTick()
+        {
+            var spawnTimer = new Timer();
+            spawnTimer.Interval = 2000;
+            spawnTimer.Tick += (sender, args) => game.SpawnMonsters();
+            spawnTimer.Start();
+        }
+        
         private void TimerTick(object sender, EventArgs e)
         {
             game.Monsters.ForEach(x => x.MoveTo(game.Player.X, game.Player.Y));
             game.Bullets.ForEach(x => x.Move());
+
             if (game.Bullets.Count > 0)
                 game.BulletCollision();
             Invalidate();

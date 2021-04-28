@@ -51,9 +51,9 @@ namespace UlernGame.Model
         {
             if (Magazine <= 0) return;
             gameModel.Bullets.Add(new Bullet(this));
-            
+            Magazine--;
         }
-        public void PlayerAction(Keys key)
+        public void PlayerMove(Keys key)
         {
             switch (key)
             {
@@ -77,10 +77,20 @@ namespace UlernGame.Model
                         Y += speed;
                     Direction = Directions.Down;
                     break;
+            }
+        }
+
+        public void PlayerAction(Keys key)
+        {
+            switch (key)
+            {
                 case Keys.Space:
                     Shoot();
                     break;
-            } 
+                case Keys.R:
+                    Reload();
+                    break;
+            }
         }
     }
 }

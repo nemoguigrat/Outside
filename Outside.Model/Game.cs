@@ -27,11 +27,13 @@ namespace UlernGame
             SpawnMonsters();
         }
 
-        private void SpawnMonsters()
+        public void SpawnMonsters()
         {
-            Monsters.Add(new Monster(100, 100, this));
-            Monsters.Add(new Monster(200, 100, this));
-            Monsters.Add(new Monster(400, 100, this));
+            var rnd = new Random();
+            var x = rnd.Next(Map.MapWidth - 1);
+            var y = rnd.Next(Map.MapHeight - 1);
+            if (Map.Objects[y,x] == null)
+                Monsters.Add(new Monster(x * 80,y * 80, this));
         }
         public bool CheckCollisionWithObstacle(int objX, int objY, int height, int width)
         {
@@ -55,6 +57,36 @@ namespace UlernGame
                     return true;
             }
             return false;
+        }
+        
+        public Monster CheckCollisionWithBullet(Bullet bullet)
+        {
+            foreach (var monster in Monsters)
+            {
+                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Hitbox.Width &&
+                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Hitbox.Height)
+                    return monster;
+            }
+            return null;
+        }
+
+        public void BulletCollision()
+        {
+            for (var i = 0; i < Bullets.Count; i++)
+            {
+                if (CheckCollisionWithObstacle(Bullets[i].X, Bullets[i].Y, 0, 0))
+                {
+                    Bullets.Remove(Bullets[i]);
+                    break;
+                }
+                var monsterToDamage = CheckCollisionWithBullet(Bullets[i]);
+                if (monsterToDamage != null)
+                {
+                    monsterToDamage.Die();
+                    Bullets.Remove(Bullets[i]);
+                }
+
+            }
         }
 
         // public void FindPathToPlayer(int playerX, int playerY)

@@ -49,7 +49,7 @@ namespace UlernGame.Model
                 case 'w':
                     return new Wall(x,y);
                 case 'n':
-                    return null; 
+                    return null;
                 default:
                     throw new Exception("Нет объектов");
             }

@@ -1,12 +1,13 @@
 ﻿
 
 using System.Drawing;
+using Outside.Model;
 
 namespace UlernGame.Model
 {
-    public class AmmunitionCrate : GameObject
+    public class AmmunitionCrate : Boosters
     {
-        public readonly int ammoCount = 30;
+        public const int ammoCount = 15;
         
         public AmmunitionCrate(int x, int y)
         {

@@ -8,8 +8,8 @@ namespace UlernGame.Model
         public Directions Direction { get; }
         public Bullet(Player player)
         {
-            X = player.X + player.Hitbox.Width / 2;
-            Y = player.Y + player.Hitbox.Height / 2;
+            X = player.X + player.Width / 2;
+            Y = player.Y + player.Height / 2;
             Direction = player.Direction;
         }
 

@@ -11,7 +11,6 @@ namespace UlernGame
         public Player Player { get; private set; }
         public List<Monster> Monsters { get;}
         public List<Bullet> Bullets { get; }
-        public Keys KeyPressed { get; }
         public MapCreator Map { get; }
 
         public Game()
@@ -23,7 +22,7 @@ namespace UlernGame
 
         public void StartGame()
         { 
-            Player = new Player(450, 300, this);
+            Player = new Player(450, 300);
             SpawnMonsters();
         }
 
@@ -35,14 +34,14 @@ namespace UlernGame
             if (Map.Objects[y,x] == null)
                 Monsters.Add(new Monster(x * 80,y * 80, this));
         }
-        public bool CheckCollisionWithObstacle(int objX, int objY, int height, int width)
+        public bool CheckCollisionWithObstacle(Point pos, int height, int width)
         {
-            if (Map.MapHeight * 80 < objY + height || objY < 0 || Map.MapWidth * 80 < objX + width || objX < 0)
+            if (Map.MapHeight * 80 < pos.Y + height || pos.Y < 0 || Map.MapWidth * 80 < pos.X + width || pos.X < 0)
                 return true;
             foreach (var e in Map.Objects)
             {
-                if (e is Wall && (e.X <= objX + width && objX <= e.X + e.Hitbox.Width) &&
-                    (e.Y <= objY + height && objY <= e.Y + e.Hitbox.Height))
+                if (e is Wall && (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
+                    (e.Y <= pos.Y + height && pos.Y <= e.Y + e.Height))
                     return true;
             }
             return false;
@@ -52,8 +51,8 @@ namespace UlernGame
         {
             foreach (var monster in Monsters)
             {
-                if ((monster.X <= Player.X + Player.Hitbox.Width && Player.X <= monster.X + monster.Hitbox.Width) &&
-                    (monster.Y <= Player.Y + Player.Hitbox.Height && Player.Y <= monster.Y + monster.Hitbox.Height))
+                if ((monster.X <= Player.X + Player.Width && Player.X <= monster.X + monster.Width) &&
+                    (monster.Y <= Player.Y + Player.Height && Player.Y <= monster.Y + monster.Height))
                     return true;
             }
             return false;
@@ -63,8 +62,8 @@ namespace UlernGame
         {
             foreach (var monster in Monsters)
             {
-                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Hitbox.Width &&
-                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Hitbox.Height)
+                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Width &&
+                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Height)
                     return monster;
             }
             return null;
@@ -74,7 +73,7 @@ namespace UlernGame
         {
             for (var i = 0; i < Bullets.Count; i++)
             {
-                if (CheckCollisionWithObstacle(Bullets[i].X, Bullets[i].Y, 0, 0))
+                if (CheckCollisionWithObstacle(new Point(Bullets[i].X, Bullets[i].Y), 0, 0))
                 {
                     Bullets.Remove(Bullets[i]);
                     break;
@@ -85,28 +84,52 @@ namespace UlernGame
                     monsterToDamage.Die();
                     Bullets.Remove(Bullets[i]);
                 }
-
             }
         }
 
-        // public void FindPathToPlayer(int playerX, int playerY)
-        // {
-        //     var queue = new Queue<Point>();
-        //     var visited = new List<Point>();
-        //     var startPoint = new Point(Monsters[0].X, Monsters[0].Y);
-        //     queue.Enqueue(startPoint);
-        //     while (queue.Count != 0)
-        //     {
-        //         var point = queue.Dequeue();
-        //         if (point.X < 0 || point.X >= Map.MapWidth || point.Y < 0 || point.Y >= Map.MapHeight) continue;
-        //         if (visited.Contains(point)) continue;
-        //         visited.Add(point);
-        //
-        //         for (var dy = -1; dy <= 1; dy++)
-        //         for (var dx = -1; dx <= 1; dx++)
-        //             if (dx != 0 && dy != 0) continue;
-        //             else queue.Enqueue(new Point {X = point.X + dx, Y = point.Y + dy});
-        //     }
-        // }
+        public void PlayerMoveDirection(Keys key)
+        {
+            switch (key)
+            {
+                case Keys.A:
+                    Player.SwitchDirection(Directions.Left);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X - Player.speed, Player.Y), Player.Width,
+                        Player.Height))
+                        Player.Move(new Point(Player.X - Player.speed, Player.Y));
+                    break;
+                case Keys.D:
+                    Player.SwitchDirection(Directions.Right);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X + Player.speed, Player.Y), Player.Width,
+                        Player.Height))
+                        Player.Move(new Point(Player.X + Player.speed, Player.Y));
+                    break;
+                case Keys.S:
+                    Player.SwitchDirection(Directions.Down);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y + Player.speed), Player.Width,
+                        Player.Height))
+                        Player.Move(new Point(Player.X, Player.Y + Player.speed));
+                    break;
+                case Keys.W:
+                    Player.SwitchDirection(Directions.Up);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y - Player.speed), Player.Width,
+                        Player.Height))
+                        Player.Move(new Point(Player.X, Player.Y  - Player.speed));
+                    break;
+            }
+        }
+        
+        public void PlayerAction(Keys key)
+        {
+            switch (key)
+            {
+                case Keys.Space:
+                    if (Player.Shoot())
+                        Bullets.Add(new Bullet(Player));
+                    break;
+                case Keys.R:
+                    Player.Reload();
+                    break;
+            }
+        }
     }
 }

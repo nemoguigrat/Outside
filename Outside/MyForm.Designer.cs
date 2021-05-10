@@ -31,10 +31,7 @@ namespace UlernGame
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            
             // 
             // MyForm
             // 
@@ -42,14 +39,10 @@ namespace UlernGame
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "MyForm";
-            ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.PictureBox pictureBox1;
 
         #endregion
     }

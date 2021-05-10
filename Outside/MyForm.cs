@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using UlernGame.Model;
 using UlernGame.View;
@@ -14,58 +15,60 @@ namespace UlernGame
     {
         public readonly Game game;
         public readonly Sprites sprites = new Sprites();
+        public List<IEnumerable<List<Point>>> pathsToPlayer;
         public MyForm()
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             game = new Game();
             game.StartGame();
-            var timer = new Timer();
-            timer.Interval = 20;
-            timer.Tick += TimerTick;
-            timer.Start();
-            DamageTimerTick();
-            MonsterTimerTick();
+            AddControls();
+            SetTimer(20, TimerTick); //основной игровой таймер
+            SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
+            SetTimer(7000, () => game.SpawnMonsters());//таймер спавна монстров 
+            SetTimer(1000, MonsterMovement);
         }
 
+        private void AddControls()
+        {
+            var magazine = new Label() {Text = game.Player.Magazine.ToString(), Location = new Point(50, Height - 50)};
+            Controls.Add(magazine);
+        }
         private void DamageTimerTick()
         {
-            var damageTimer = new Timer();
-            damageTimer.Interval = 500;
-            damageTimer.Tick += (sender, arg) =>
-            {
-                if (game.CheckCollisionWithEnemy())
-                    game.Player.ReserveDamage(Monster.damage);
-            };
-            damageTimer.Start();
+            if (game.CheckCollisionWithEnemy())
+                game.Player.ReserveDamage(Monster.damage);
         }
 
-        private void MonsterTimerTick()
+        private void MonsterMovement()
         {
-            var spawnTimer = new Timer();
-            spawnTimer.Interval = 2000;
-            spawnTimer.Tick += (sender, args) => game.SpawnMonsters();
-            spawnTimer.Start();
+            game.Monsters.ForEach(x => x.MoveTo());
         }
-        
-        private void TimerTick(object sender, EventArgs e)
+        private void TimerTick()
         {
-            game.Monsters.ForEach(x => x.MoveTo(game.Player.X, game.Player.Y));
             game.Bullets.ForEach(x => x.Move());
-
+            Controls[0].Update();
             if (game.Bullets.Count > 0)
                 game.BulletCollision();
             Invalidate();
         }
 
+        private void SetTimer(int interval, Action func)
+        {
+            var timer = new Timer();
+            timer.Interval = interval;
+            timer.Tick += (sender, args) => func();
+            timer.Start();
+        }
+
         protected override void OnKeyDown(KeyEventArgs key)
         {
-            game.Player.PlayerMove(key.KeyData);
+            game.PlayerMoveDirection(key.KeyData);
         }
 
         protected override void OnKeyUp(KeyEventArgs key)
         {
-            game.Player.PlayerAction(key.KeyData);
+            game.PlayerAction(key.KeyData);
         }
 
         protected override void OnPaint(PaintEventArgs g)
@@ -77,9 +80,8 @@ namespace UlernGame
             graphic.FillRectangle(Brushes.PaleGreen, 
                 new Rectangle(20, 20, game.Player.Heals * 5, 20));
             DrawBullets(graphic);
-            
         }
-        void DrawMap(Graphics gr)
+        private void DrawMap(Graphics gr)
         {
             foreach (var e in game.Map.Objects)
             {
@@ -108,6 +110,5 @@ namespace UlernGame
                 g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 6,6);
             }
         }
-        
     }
 }

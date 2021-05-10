@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace UlernGame.Model
 {
@@ -15,7 +17,8 @@ namespace UlernGame.Model
         {
             X = x;
             Y = y;
-            Hitbox = new Rectangle(new Point(0,0), new Size(50,50));
+            Width = 50;
+            Height = 50;
             this.gameModel = gameModel;
         }
 
@@ -25,28 +28,61 @@ namespace UlernGame.Model
         }
         
         //алгоритм движения и нахождения игрокка будет переработан (возможно через обход в ширину)
-        public void MoveTo(int playerX, int playerY)
+        public void MoveTo()
         {
-            var (deltaX, deltaY) = FindVectorToPlayer(playerX, playerY);
+            // var vector = GetNextPos();
+            
+            // if (!gameModel.CheckCollisionWithObstacle(new Point(X + deltaX * speed, Y + deltaY * speed), Width,
+            //     Height))
+            // {
+            //     X += deltaX * speed;
+            //     Y += deltaY * speed;
+            // }
+
+            var vector = GetNextPos();
+            
+            var deltaX = Math.Sign(vector.X - X / 80);
+            var deltaY = Math.Sign(vector.Y - Y / 80);
             if (deltaX == 0)
                 Direction = deltaY > 0 ? Directions.Down : Directions.Up;
             if (deltaY == 0)
                 Direction = deltaX > 0 ? Directions.Right : Directions.Left;
-            if (!gameModel.CheckCollisionWithObstacle(X + deltaX * speed, Y + deltaY * speed, Hitbox.Width, Hitbox.Height))
-            {
-                X += deltaX * speed;
-                Y += deltaY * speed;
-            }
             
+            X = vector.X * 80;
+            Y = vector.Y * 80;
         }
 
-        private (int, int) FindVectorToPlayer(int playerX, int playerY)
+
+        public Point GetNextPos()
         {
-            var deltaX = Math.Sign(playerX - X);
-            var deltaY = Math.Sign(playerY - Y);
-            if (deltaX != 0)
-                return (deltaX, 0);
-            return (0, deltaY);
+            var visited = new HashSet<Point>();
+            var playerPos = new Point(gameModel.Player.X / 80, gameModel.Player.Y / 80);
+            var queue = new Queue<Point>();
+            var start = new Point(X / 80, Y / 80);
+            queue.Enqueue(playerPos);
+            visited.Add(playerPos);
+            while (queue.Count != 0)
+            {
+                var point = queue.Dequeue();
+                for (var dy = -1; dy <= 1; dy++)
+                for (var dx = -1; dx <= 1; dx++)
+                    if (dx == 0 || dy == 0)
+                    {
+                        var neighbourPoint = new Point(point.X + dx, point.Y + dy);
+                        if (!CanMove(neighbourPoint) || visited.Contains(neighbourPoint))
+                            continue;
+                        if (neighbourPoint == start)
+                            return point;
+                        queue.Enqueue(neighbourPoint);
+                        visited.Add(neighbourPoint);
+                    }
+            }
+
+            return start;
         }
+
+        private bool CanMove(Point point) =>
+            point.X >= 0 && point.Y >= 0 && point.X < gameModel.Map.MapWidth && point.Y < gameModel.Map.MapHeight &&
+            gameModel.Map.Objects[point.Y, point.X] == null;
     }
 }

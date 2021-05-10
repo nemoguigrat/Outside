@@ -7,6 +7,7 @@ namespace UlernGame.Model
     {
         public int X { get; protected set; }
         public int Y { get; protected set; }
-        public Rectangle Hitbox { get; protected set; }
+        public int Width { get; protected set; }
+        public int Height { get; protected set; }
     }
 }

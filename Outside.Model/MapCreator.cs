@@ -18,7 +18,7 @@ namespace UlernGame.Model
             {'n', 'n', 'n', 'n', 'n', 'n','n','w','n','w','n','n','n','n','n','n'},
             {'n', 'n', 'n', 'n', 'n', 'n','n','w','n','w','n','n','n','n','n','n'},
             {'n', 'n', 'n', 'n', 'n', 'n','n','n','n','n','n','n','n','n','n','n'},
-            {'n', 'n', 'n', 'n', 'n', 'n','n','w','w','w','n','n','n','n','n','n'}, };
+            {'n', 'n', 'n', 'n', 'n', 'n','n','w','w','w','n','n','n','n','n','n'}};
         
         public GameObject[,] Objects { get; }
         public int MapWidth { get; }

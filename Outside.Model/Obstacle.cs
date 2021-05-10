@@ -6,7 +6,8 @@ namespace UlernGame.Model
     {
         public Obstacle()
         {
-            Hitbox = new Rectangle(new Point(0,0), new Size(80,80));
+            Width = 80;
+            Height = 80;
         }
     }
 }

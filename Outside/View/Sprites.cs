@@ -9,13 +9,16 @@ namespace UlernGame.View
         public Dictionary<string, Image> Player { get; }
         public Dictionary<string, Image> Monster { get; }
         public Image Wall { get; }
-        // public Bitmap Bullet { get; }
+        public Image Medkit { get; }
+        public Image AmmunitionCrate { get; }
 
         public Sprites()
         {
             Player = LoadImagesEntity("survivor");
             Monster = LoadImagesEntity("zombie");
             Wall = LoadImage("wall");
+            Medkit = LoadImage("medkit");
+            AmmunitionCrate = LoadImage("ammo");
         }
 
         private Dictionary<string, Image> LoadImagesEntity(string file)

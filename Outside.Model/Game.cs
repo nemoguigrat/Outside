@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Outside.Model;
 using UlernGame.Model;
 
 namespace UlernGame
@@ -11,6 +12,7 @@ namespace UlernGame
         public Player Player { get; private set; }
         public List<Monster> Monsters { get;}
         public List<Bullet> Bullets { get; }
+        public List<Boosters> Boosters { get;}
         public MapCreator Map { get; }
 
         public Game()
@@ -18,11 +20,12 @@ namespace UlernGame
             Map = new MapCreator();
             Monsters = new List<Monster>();
             Bullets = new List<Bullet>();
+            Boosters = new List<Boosters>();
         }
 
         public void StartGame()
         { 
-            Player = new Player(450, 300);
+            Player = new Player(8 * 80, 3 * 80);
             SpawnMonsters();
         }
 
@@ -32,7 +35,7 @@ namespace UlernGame
             var x = rnd.Next(Map.MapWidth - 1);
             var y = rnd.Next(Map.MapHeight - 1);
             if (Map.Objects[y,x] == null)
-                Monsters.Add(new Monster(x * 80,y * 80, this));
+                Monsters.Add(new Monster(x * 80 + 10,y * 80 + 10, this));
         }
         public bool CheckCollisionWithObstacle(Point pos, int height, int width)
         {
@@ -45,6 +48,20 @@ namespace UlernGame
                     return true;
             }
             return false;
+        }
+
+        public void CheckCollisionWithBoosters()
+        {
+            for (var i = 0; i < Boosters.Count; i++)
+                if (Boosters[i].X <= Player.X + Player.Width && Player.X <= Boosters[i].X + Boosters[i].Width &&
+                    Boosters[i].Y <= Player.Y + Player.Height && Player.Y <= Boosters[i].Y + Boosters[i].Height)
+                {
+                    if (Boosters[i] is Medkit)
+                        Player.Heal();
+                    else if (Boosters[i] is AmmunitionCrate)
+                        Player.AmmoAdd();
+                    Boosters.Remove(Boosters[i]);
+                }
         }
 
         public bool CheckCollisionWithEnemy()
@@ -81,10 +98,22 @@ namespace UlernGame
                 var monsterToDamage = CheckCollisionWithBullet(Bullets[i]);
                 if (monsterToDamage != null)
                 {
+                    RandomSpawnBoosters(monsterToDamage);
                     monsterToDamage.Die();
                     Bullets.Remove(Bullets[i]);
                 }
             }
+        }
+
+        public void RandomSpawnBoosters(Monster monster)
+        {
+            var random = new Random();
+            var next = random.Next(0, 100);
+            if (next > 90)
+                Boosters.Add(new Medkit(monster.X, monster.Y));
+            else if (next <= 90 && next > 45)
+                Boosters.Add(new AmmunitionCrate(monster.X, monster.Y));
+
         }
 
         public void PlayerMoveDirection(Keys key)

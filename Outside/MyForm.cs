@@ -25,14 +25,14 @@ namespace UlernGame
             AddControls();
             SetTimer(20, TimerTick); //основной игровой таймер
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
-            SetTimer(7000, () => game.SpawnMonsters());//таймер спавна монстров 
-            SetTimer(1000, MonsterMovement);
+            SetTimer(4000, () => game.SpawnMonsters());//таймер спавна монстров 
+            SetTimer(1000, MonsterMovement); // обновление маршрута и движение монстра
         }
 
         private void AddControls()
         {
-            var magazine = new Label() {Text = game.Player.Magazine.ToString(), Location = new Point(50, Height - 50)};
-            Controls.Add(magazine);
+            var ammunition = new Label {Location = new Point(20, 70), AutoSize = true, BackColor = Color.Transparent};
+            Controls.Add(ammunition);
         }
         private void DamageTimerTick()
         {
@@ -47,9 +47,11 @@ namespace UlernGame
         private void TimerTick()
         {
             game.Bullets.ForEach(x => x.Move());
-            Controls[0].Update();
             if (game.Bullets.Count > 0)
                 game.BulletCollision();
+            game.CheckCollisionWithBoosters();
+            Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
+            Controls[0].Font = new Font(FontFamily.GenericMonospace, 20);
             Invalidate();
         }
 
@@ -80,6 +82,7 @@ namespace UlernGame
             graphic.FillRectangle(Brushes.PaleGreen, 
                 new Rectangle(20, 20, game.Player.Heals * 5, 20));
             DrawBullets(graphic);
+            DrawBoosters(graphic);
         }
         private void DrawMap(Graphics gr)
         {
@@ -90,6 +93,17 @@ namespace UlernGame
             }
         }
 
+        private void DrawBoosters(Graphics gr)
+        {
+            for (var i = 0; i < game.Boosters.Count; i++)
+            {
+                if (game.Boosters[i] is Medkit)
+                    gr.DrawImage(sprites.Medkit, game.Boosters[i].X, game.Boosters[i].Y);
+                if (game.Boosters[i] is AmmunitionCrate)
+                    gr.DrawImage(sprites.AmmunitionCrate, game.Boosters[i].X, game.Boosters[i].Y);
+            }
+                
+        }
         private void DrawPlayer(Graphics gr)
         {
             var a = game.Player.Direction;

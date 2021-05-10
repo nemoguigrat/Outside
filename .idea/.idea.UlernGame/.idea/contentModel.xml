@@ -38,6 +38,7 @@
       <e p="Outside.Model" t="IncludeRecursive">
         <e p="AmmunitionCrate.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Boosters.cs" t="Include" />
         <e p="Bullet.cs" t="Include" />
         <e p="Directions.cs" t="Include" />
         <e p="Door.cs" t="Include" />

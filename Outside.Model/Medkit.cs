@@ -1,8 +1,9 @@
 ﻿using System.Drawing;
+using Outside.Model;
 
 namespace UlernGame.Model
 {
-    public class Medkit : GameObject
+    public class Medkit : Boosters
     {
         public const int healCount = 50;
 

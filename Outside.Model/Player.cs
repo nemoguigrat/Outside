@@ -6,8 +6,8 @@ namespace UlernGame.Model
 {
     public class Player : GameObject
     {
-        private const int maxAmmunition = 120;
-        private const int fullMagazine = 15;
+        private const int maxAmmunition = 50;
+        private const int fullMagazine = 10;
         private const int maxHeals = 100;
         public const int speed = 5;
         public const int damage = 3;
@@ -50,6 +50,19 @@ namespace UlernGame.Model
             if (Magazine <= 0) return false;
             Magazine--;
             return true;
+        }
+
+        public void Heal()
+        {
+            Heals += Medkit.healCount;
+        }
+
+        public void AmmoAdd()
+        {
+            if (Ammunition + AmmunitionCrate.ammoCount <= maxAmmunition)
+                Ammunition += AmmunitionCrate.ammoCount;
+            else
+                Ammunition = maxAmmunition;
         }
 
         public void Move(Point point)

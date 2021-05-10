@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -15,25 +16,31 @@ namespace UlernGame
     {
         public readonly Game game;
         public readonly Sprites sprites = new Sprites();
-        public List<IEnumerable<List<Point>>> pathsToPlayer;
+
         public MyForm()
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
+            BackColor = Color.Gray;
             game = new Game();
             game.StartGame();
             AddControls();
             SetTimer(20, TimerTick); //основной игровой таймер
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
-            SetTimer(4000, () => game.SpawnMonsters());//таймер спавна монстров 
-            SetTimer(1000, MonsterMovement); // обновление маршрута и движение монстра
+            SetTimer(4000, () => game.SpawnMonsters()); //таймер спавна монстров 
+            SetTimer(1500, MonsterMovement); // обновление маршрута и движение монстра
         }
 
         private void AddControls()
         {
-            var ammunition = new Label {Location = new Point(20, 70), AutoSize = true, BackColor = Color.Transparent};
+            var ammunition = new Label
+            {
+                Location = new Point(20, 70), AutoSize = true, BackColor = Color.Transparent,
+                ForeColor = Color.Azure
+            };
             Controls.Add(ammunition);
         }
+
         private void DamageTimerTick()
         {
             if (game.CheckCollisionWithEnemy())
@@ -44,6 +51,7 @@ namespace UlernGame
         {
             game.Monsters.ForEach(x => x.MoveTo());
         }
+
         private void TimerTick()
         {
             game.Bullets.ForEach(x => x.Move());
@@ -51,7 +59,7 @@ namespace UlernGame
                 game.BulletCollision();
             game.CheckCollisionWithBoosters();
             Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
-            Controls[0].Font = new Font(FontFamily.GenericMonospace, 20);
+            Controls[0].Font = new Font(FontFamily.GenericMonospace, 20, FontStyle.Bold);
             Invalidate();
         }
 
@@ -79,11 +87,13 @@ namespace UlernGame
             DrawMap(graphic);
             DrawPlayer(graphic);
             DrawMonster(graphic);
-            graphic.FillRectangle(Brushes.PaleGreen, 
-                new Rectangle(20, 20, game.Player.Heals * 5, 20));
             DrawBullets(graphic);
             DrawBoosters(graphic);
+            DrawFlashLight(graphic);
+            graphic.FillRectangle(Brushes.PaleGreen,
+                new Rectangle(20, 20, game.Player.Heals * 5, 20));
         }
+
         private void DrawMap(Graphics gr)
         {
             foreach (var e in game.Map.Objects)
@@ -102,27 +112,36 @@ namespace UlernGame
                 if (game.Boosters[i] is AmmunitionCrate)
                     gr.DrawImage(sprites.AmmunitionCrate, game.Boosters[i].X, game.Boosters[i].Y);
             }
-                
         }
+
         private void DrawPlayer(Graphics gr)
         {
             var a = game.Player.Direction;
             gr.DrawImage(sprites.Player[a.ToString()], game.Player.X, game.Player.Y);
-            // gr.DrawRectangle(Pens.Chartreuse, game.Player.X, game.Player.Y, game.Player.Hitbox.Width, game.Player.Hitbox.Height);
         }
 
         private void DrawMonster(Graphics gr)
         {
             for (var i = 0; i < game.Monsters.Count; i++)
-                gr.DrawImage(sprites.Monster[game.Monsters[i].Direction.ToString()], game.Monsters[i].X, game.Monsters[i].Y);
-            
+                gr.DrawImage(sprites.Monster[game.Monsters[i].Direction.ToString()], game.Monsters[i].X,
+                    game.Monsters[i].Y);
         }
+
         private void DrawBullets(Graphics g)
         {
             foreach (var bullet in game.Bullets)
             {
-                g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 6,6);
+                g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 6, 6);
             }
+        }
+
+        private void DrawFlashLight(Graphics gr)
+        {
+            var path = new GraphicsPath();
+            path.AddEllipse(game.Player.X - 90 + game.Player.Width / 2, 
+                game.Player.Y - 90 + game.Player.Height / 2, 180, 180);
+            path.AddRectangle(new Rectangle(0, 0, Width, Height));
+            gr.FillPath(new SolidBrush(Color.Black), path);
         }
     }
 }

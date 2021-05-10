@@ -54,7 +54,10 @@ namespace UlernGame.Model
 
         public void Heal()
         {
-            Heals += Medkit.healCount;
+            if (Heals + Medkit.healCount <= maxHeals)
+                Heals += Medkit.healCount;
+            else
+                Heals = maxHeals;
         }
 
         public void AmmoAdd()

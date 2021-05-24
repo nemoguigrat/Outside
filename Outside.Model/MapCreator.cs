@@ -9,17 +9,19 @@ namespace UlernGame.Model
 {
     public class MapCreator
     {
-        private readonly char[,] Level = new char[9,16] {
-            {'n', 'n', 'n', 'w', 'w', 'n','w','w','n','n','n','n','n','w','n','n'},
-            {'n', 'w', 'n', 'n', 'w', 'n','n','n','n','w','n','w','w','w','n','n'},
-            {'n', 'w', 'n', 'w', 'w', 'w','w','w','w','w','n','n','n','n','n','n'},
-            {'n', 'w', 'n', 'n', 'n', 'w','n','n','n','n','n','n','w','n','w','n'},
-            {'n', 'w', 'n', 'w', 'n', 'n','n','n','n','n','w','n','w','w','w','n'},
-            {'n', 'w', 'n', 'w', 'w', 'w','w','w','w','n','n','n','n','n','n','n'},
-            {'n', 'w', 'n', 'n', 'w', 'n','w','n','w','n','w','n','w','w','w','n'},
-            {'n', 'w', 'w', 'n', 'w', 'n','w','n','w','w','w','n','w','n','w','n'},
-            {'n', 'n', 'n', 'n', 'w', 'n','n','n','n','n','n','n','n','n','n','n'}};
-        
+        private readonly char[,] Level = new char[9, 16]
+        {
+            {'n', 'n', 'n', 'w', 'w', 'n', 'w', 'w', 'n', 'n', 'n', 'n', 'l', 'w', 'n', 'n'},
+            {'n', 'w', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'w', 'w', 'n', 'n'},
+            {'n', 'w', 'n', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'n', 'n', 'n', 'n', 'n', 'n'},
+            {'n', 'w', 'n', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'n'},
+            {'n', 'w', 'n', 'w', 'n', 'd', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'w', 'w', 'n'},
+            {'n', 'w', 'n', 'w', 'w', 'w', 'w', 'w', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'n'},
+            {'n', 'w', 'n', 'n', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'w', 'w', 'n'},
+            {'n', 'w', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'w', 'w', 'n', 'w', 'n', 'w', 'n'},
+            {'n', 'n', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'}
+        };
+
         public GameObject[,] Objects { get; }
         public int MapWidth { get; }
         public int MapHeight { get; }
@@ -47,7 +49,11 @@ namespace UlernGame.Model
             switch (c)
             {
                 case 'w':
-                    return new Wall(x,y);
+                    return new Wall(x, y);
+                case 'd':
+                    return new Door(x, y, false);
+                case 'l':
+                    return new Door(x,y, true);
                 case 'n':
                     return null;
                 default:

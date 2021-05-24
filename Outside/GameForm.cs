@@ -12,12 +12,13 @@ using UlernGame.View;
 
 namespace UlernGame
 {
-    public partial class MyForm : Form
+    public partial class GameForm : Form
     {
         private Game game;
         private Painter painter;
+        private Timer mainTimer;
 
-        public MyForm()
+        public GameForm()
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
@@ -30,7 +31,11 @@ namespace UlernGame
             painter = new Painter(game);
             game.StartGame();
             AddControls();
-            SetTimer(20, TimerTick); //основной игровой таймер
+            mainTimer = new Timer();
+            mainTimer.Interval = 20;
+            mainTimer.Tick += (sender, args) => TimerTick();
+            mainTimer.Start();
+            // SetTimer(20, TimerTick); //основной игровой таймер
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
             SetTimer(4000, () => game.SpawnMonsters()); //таймер спавна монстров 
             SetTimer(1500, MonsterMovement); // обновление маршрута и движение монстра
@@ -65,6 +70,13 @@ namespace UlernGame
                 game.BulletCollision();
             game.CheckCollisionWithBoosters();
             Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
+            if (game.GameOver || !game.Player.Alive)
+            {
+                mainTimer.Stop();
+                var form = new GameOverForm();
+                form.Show();
+                Close();
+            }
             Invalidate();
         }
 

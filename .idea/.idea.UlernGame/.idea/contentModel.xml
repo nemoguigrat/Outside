@@ -8,9 +8,13 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controller" t="Include" />
-        <e p="MyForm.cs" t="Include" />
-        <e p="MyForm.Designer.cs" t="Include" />
-        <e p="MyForm.resx" t="Include" />
+        <e p="GameForm.cs" t="Include" />
+        <e p="GameForm.Designer.cs" t="Include" />
+        <e p="GameForm.resx" t="Include" />
+        <e p="GameOverForm.cs" t="Include" />
+        <e p="GameOverForm.Designer.cs" t="Include" />
+        <e p="MenuForm.cs" t="Include" />
+        <e p="MenuForm.Designer.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Outside.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />

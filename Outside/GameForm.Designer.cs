@@ -2,7 +2,7 @@
 
 namespace UlernGame
 {
-    partial class MyForm
+    partial class GameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@ namespace UlernGame
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Location = new System.Drawing.Point(15, 15);
-            this.Name = "MyForm";
+            this.Name = "GameForm";
             this.ResumeLayout(false);
         }
 

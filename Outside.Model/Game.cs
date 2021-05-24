@@ -10,23 +10,27 @@ namespace UlernGame
     public class Game
     {
         public Player Player { get; private set; }
-        public List<Monster> Monsters { get;}
+        public List<Monster> Monsters { get; }
         public List<Bullet> Bullets { get; }
-        public List<Boosters> Boosters { get;}
+        public List<Boosters> Boosters { get; }
         public MapCreator Map { get; }
+        public Dictionary<Directions, Point> Deltas { get; }
+        public bool GameOver { get; private set; }
 
         public Game()
         {
+            GameOver = false;
             Map = new MapCreator();
             Monsters = new List<Monster>();
             Bullets = new List<Bullet>();
             Boosters = new List<Boosters>();
+            Deltas = FindDeltas();
         }
 
         public void StartGame()
-        { 
+        {
             Player = new Player(8 * 80 + 15, 3 * 80 + 15);
-            Boosters.Add( new Key(9 * 80 + 15, 3 * 80 + 15));
+            Boosters.Add(new Key(9 * 80 + 15, 3 * 80 + 15));
             SpawnMonsters();
         }
 
@@ -35,19 +39,22 @@ namespace UlernGame
             var rnd = new Random();
             var x = rnd.Next(Map.MapWidth - 1);
             var y = rnd.Next(Map.MapHeight - 1);
-            if (Map.Objects[y,x] == null)
-                Monsters.Add(new Monster(x * 80 + 10,y * 80 + 10, this));
+            if (Map.Objects[y, x] == null)
+                Monsters.Add(new Monster(x * 80 + 10, y * 80 + 10, this));
         }
+
         public bool CheckCollisionWithObstacle(Point pos, int height, int width)
         {
             if (Map.MapHeight * 80 < pos.Y + height || pos.Y < 0 || Map.MapWidth * 80 < pos.X + width || pos.X < 0)
                 return true;
             foreach (var e in Map.Objects)
             {
-                if (e is Wall && (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
+                if ((e is Wall || e is Door && !(e as Door).isOpen) &&
+                    (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
                     (e.Y <= pos.Y + height && pos.Y <= e.Y + e.Height))
                     return true;
             }
+
             return false;
         }
 
@@ -75,9 +82,10 @@ namespace UlernGame
                     (monster.Y <= Player.Y + Player.Height && Player.Y <= monster.Y + monster.Height))
                     return true;
             }
+
             return false;
         }
-        
+
         public Monster CheckCollisionWithBullet(Bullet bullet)
         {
             foreach (var monster in Monsters)
@@ -86,6 +94,7 @@ namespace UlernGame
                     monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Height)
                     return monster;
             }
+
             return null;
         }
 
@@ -98,6 +107,7 @@ namespace UlernGame
                     Bullets.Remove(Bullets[i]);
                     break;
                 }
+
                 var monsterToDamage = CheckCollisionWithBullet(Bullets[i]);
                 if (monsterToDamage != null)
                 {
@@ -116,7 +126,6 @@ namespace UlernGame
                 Boosters.Add(new Medkit(monster.X, monster.Y));
             else if (next <= 90 && next > 45)
                 Boosters.Add(new AmmunitionCrate(monster.X, monster.Y));
-
         }
 
         public void PlayerMoveDirection(Keys key)
@@ -145,11 +154,23 @@ namespace UlernGame
                     Player.SwitchDirection(Directions.Up);
                     if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y - Player.speed), Player.Width,
                         Player.Height))
-                        Player.Move(new Point(Player.X, Player.Y  - Player.speed));
+                        Player.Move(new Point(Player.X, Player.Y - Player.speed));
                     break;
             }
         }
-        
+
+        private void OpenDoor()
+        {
+            var pos = new Point(Player.X / 80, Player.Y / 80);
+            var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
+            if (current.X <= Map.MapWidth && current.X >= 0 && current.Y <= Map.MapHeight && current.Y >= 0 &&
+                Map.Objects[current.Y, current.X] is Door door)
+                if (!door.isLocked)
+                    door.OpenClose();
+                else if (door.isLocked && Player.HaveKey)
+                    GameOver = true;
+        }
+
         public void PlayerAction(Keys key)
         {
             switch (key)
@@ -161,7 +182,22 @@ namespace UlernGame
                 case Keys.R:
                     Player.Reload();
                     break;
+                case Keys.F:
+                    OpenDoor();
+                    break;
             }
+        }
+
+        private Dictionary<Directions, Point> FindDeltas()
+        {
+            var result = new Dictionary<Directions, Point>
+            {
+                [Directions.Down] = new Point(0, 1),
+                [Directions.Up] = new Point(0, -1),
+                [Directions.Right] = new Point(1, 0),
+                [Directions.Left] = new Point(-1, 0)
+            };
+            return result;
         }
     }
 }

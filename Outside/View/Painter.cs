@@ -37,6 +37,12 @@ namespace UlernGame.View
             {
                 if (e is Wall)
                     gr.DrawImage(sprites.Wall, e.X, e.Y);
+                else if (e is Door && (e as Door).isLocked)
+                    gr.DrawImage(sprites.LockedDoor, e.X, e.Y);
+                else if (e is Door && (e as Door).isOpen)
+                    gr.DrawImage(sprites.OpenDoor, e.X, e.Y);
+                else if (e is Door)
+                    gr.DrawImage(sprites.ClosedDoor, e.X, e.Y);
             }
         }
 

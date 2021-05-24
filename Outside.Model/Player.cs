@@ -17,6 +17,7 @@ namespace UlernGame.Model
         public int Damage { get; }
         public int Heals { get; private set; }
         public bool HaveKey { get; set; }
+        public bool Alive { get; private set; }
         
         public Player(int x, int y)
         {
@@ -29,6 +30,7 @@ namespace UlernGame.Model
             Width = 50;
             Height = 50;
             HaveKey = false;
+            Alive = true;
         }
 
         public void Reload()
@@ -43,7 +45,7 @@ namespace UlernGame.Model
         {
             Heals -= damage;
             if (Heals <= 0)
-                throw new Exception();
+                Alive = false;
         }
 
         public bool Shoot()

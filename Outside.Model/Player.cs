@@ -10,13 +10,13 @@ namespace UlernGame.Model
         private const int fullMagazine = 10;
         private const int maxHeals = 100;
         public const int speed = 5;
-        public const int damage = 3;
         public int Ammunition { get; private set; }
         public int Magazine { get; private set; }
         public Directions Direction { get; private set; }
 
         public int Damage { get; }
         public int Heals { get; private set; }
+        public bool HaveKey { get; set; }
         
         public Player(int x, int y)
         {
@@ -28,6 +28,7 @@ namespace UlernGame.Model
             Damage = 10;
             Width = 50;
             Height = 50;
+            HaveKey = false;
         }
 
         public void Reload()

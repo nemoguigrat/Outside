@@ -25,7 +25,8 @@ namespace UlernGame
 
         public void StartGame()
         { 
-            Player = new Player(8 * 80, 3 * 80);
+            Player = new Player(8 * 80 + 15, 3 * 80 + 15);
+            Boosters.Add( new Key(9 * 80 + 15, 3 * 80 + 15));
             SpawnMonsters();
         }
 
@@ -60,6 +61,8 @@ namespace UlernGame
                         Player.Heal();
                     else if (Boosters[i] is AmmunitionCrate)
                         Player.AmmoAdd();
+                    else if (Boosters[i] is Key)
+                        Player.HaveKey = true;
                     Boosters.Remove(Boosters[i]);
                 }
         }

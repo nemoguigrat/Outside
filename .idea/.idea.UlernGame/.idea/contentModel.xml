@@ -19,8 +19,12 @@
         </e>
         <e p="Resources" t="Include">
           <e p="ammo.png" t="Include" />
+          <e p="closed_door.png" t="Include" />
           <e p="dead.png" t="Include" />
+          <e p="final_door.png" t="Include" />
+          <e p="key.png" t="Include" />
           <e p="medkit.png" t="Include" />
+          <e p="open_door.png" t="Include" />
           <e p="survivorDown.png" t="Include" />
           <e p="survivorLeft.png" t="Include" />
           <e p="survivorRight.png" t="Include" />
@@ -32,6 +36,7 @@
           <e p="zombieUp.png" t="Include" />
         </e>
         <e p="View" t="Include">
+          <e p="Painter.cs" t="Include" />
           <e p="Sprites.cs" t="Include" />
         </e>
       </e>
@@ -44,6 +49,7 @@
         <e p="Door.cs" t="Include" />
         <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />
+        <e p="Key.cs" t="Include" />
         <e p="MapCreator.cs" t="Include" />
         <e p="MapPoint.cs" t="Include" />
         <e p="Medkit.cs" t="Include" />

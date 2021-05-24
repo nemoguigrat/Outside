@@ -11,6 +11,10 @@ namespace UlernGame.View
         public Image Wall { get; }
         public Image Medkit { get; }
         public Image AmmunitionCrate { get; }
+        public Image OpenDoor { get; }
+        public Image ClosedDoor { get; }
+        public Image LockedDoor { get; }
+        public Image Key { get; }
 
         public Sprites()
         {
@@ -19,6 +23,10 @@ namespace UlernGame.View
             Wall = LoadImage("wall");
             Medkit = LoadImage("medkit");
             AmmunitionCrate = LoadImage("ammo");
+            OpenDoor = LoadImage("open_door");
+            ClosedDoor = LoadImage("closed_door");
+            LockedDoor = LoadImage("final_door");
+            Key = LoadImage("key");
         }
 
         private Dictionary<string, Image> LoadImagesEntity(string file)

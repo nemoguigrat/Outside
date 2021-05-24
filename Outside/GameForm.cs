@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using UlernGame.Model;
@@ -18,11 +19,12 @@ namespace UlernGame
         private Painter painter;
         private Timer mainTimer;
 
-        public GameForm()
+        public GameForm(Point location)
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             BackColor = Color.Gray;
+            Location = location;
         }
 
         protected override void OnLoad(EventArgs eventArgs)
@@ -65,18 +67,17 @@ namespace UlernGame
 
         private void TimerTick()
         {
+            if (game.GameOver || !game.Player.Alive)
+            {
+                mainTimer.Stop();
+                Close();
+            }
             game.Bullets.ForEach(x => x.Move());
             if (game.Bullets.Count > 0)
                 game.BulletCollision();
             game.CheckCollisionWithBoosters();
-            Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
-            if (game.GameOver || !game.Player.Alive)
-            {
-                mainTimer.Stop();
-                var form = new GameOverForm();
-                form.Show();
-                Close();
-            }
+            if (Controls.Count > 0)
+                Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
             Invalidate();
         }
 
@@ -96,6 +97,13 @@ namespace UlernGame
         protected override void OnKeyUp(KeyEventArgs key)
         {
             game.PlayerAction(key.KeyData);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            var form = new GameOverForm(Location);
+            form.Show();
         }
     }
 }

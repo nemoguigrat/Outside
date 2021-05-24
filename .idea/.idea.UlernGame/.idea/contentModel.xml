@@ -8,6 +8,9 @@
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controller" t="Include" />
+        <e p="Fonts" t="Include">
+          <e p="agency.ttf" t="Include" />
+        </e>
         <e p="GameForm.cs" t="Include" />
         <e p="GameForm.Designer.cs" t="Include" />
         <e p="GameForm.resx" t="Include" />
@@ -40,6 +43,7 @@
           <e p="zombieUp.png" t="Include" />
         </e>
         <e p="View" t="Include">
+          <e p="CustomFonts.cs" t="Include" />
           <e p="Painter.cs" t="Include" />
           <e p="Sprites.cs" t="Include" />
         </e>

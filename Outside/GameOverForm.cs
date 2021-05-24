@@ -5,11 +5,12 @@ namespace UlernGame
 {
     public partial class GameOverForm : Form
     {
-        public GameOverForm()
+        public GameOverForm(Point location)
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             BackColor = Color.Gray;
+            Location = location;
             AddControls();
         }
 
@@ -19,8 +20,8 @@ namespace UlernGame
             var exitButton = new Button() { Text = "выход", AutoSize = true, Location = new Point(Width / 2, Height / 2 + 50)};
             restartButton.Click += (sender, args) =>
             {
-                new GameForm().Show();
-                Hide();
+                new GameForm(Location).Show();
+                Close();
             };
             exitButton.Click += (sender, args) => Application.Exit();
             Controls.Add(restartButton);

@@ -13,14 +13,14 @@ namespace UlernGame
         public List<Monster> Monsters { get; }
         public List<Bullet> Bullets { get; }
         public List<Boosters> Boosters { get; }
-        public MapCreator Map { get; }
+        public GameObject[,] Map { get; }
         public Dictionary<Directions, Point> Deltas { get; }
         public bool GameOver { get; private set; }
 
-        public Game()
+        public Game(string level)
         {
             GameOver = false;
-            Map = new MapCreator();
+            Map = MapCreator.CreateMap(level);
             Monsters = new List<Monster>();
             Bullets = new List<Bullet>();
             Boosters = new List<Boosters>();
@@ -37,17 +37,17 @@ namespace UlernGame
         public void SpawnMonsters()
         {
             var rnd = new Random();
-            var x = rnd.Next(Map.MapWidth - 1);
-            var y = rnd.Next(Map.MapHeight - 1);
-            if (Map.Objects[y, x] == null)
+            var x = rnd.Next(MapCreator.MapWidth - 1);
+            var y = rnd.Next(MapCreator.MapHeight - 1);
+            if (Map[x, y] == null)
                 Monsters.Add(new Monster(x * 80 + 10, y * 80 + 10, this));
         }
 
         public bool CheckCollisionWithObstacle(Point pos, int height, int width)
         {
-            if (Map.MapHeight * 80 < pos.Y + height || pos.Y < 0 || Map.MapWidth * 80 < pos.X + width || pos.X < 0)
+            if (MapCreator.MapHeight * 80 < pos.Y + height || pos.Y < 0 || MapCreator.MapWidth * 80 < pos.X + width || pos.X < 0)
                 return true;
-            foreach (var e in Map.Objects)
+            foreach (var e in Map)
             {
                 if ((e is Wall || e is Door && !(e as Door).isOpen) &&
                     (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
@@ -124,7 +124,7 @@ namespace UlernGame
             var next = random.Next(0, 100);
             if (next > 90)
                 Boosters.Add(new Medkit(monster.X, monster.Y));
-            else if (next <= 90 && next > 45)
+            else if (next > 65)
                 Boosters.Add(new AmmunitionCrate(monster.X, monster.Y));
         }
 
@@ -163,8 +163,8 @@ namespace UlernGame
         {
             var pos = new Point(Player.X / 80, Player.Y / 80);
             var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
-            if (current.X <= Map.MapWidth && current.X >= 0 && current.Y <= Map.MapHeight && current.Y >= 0 &&
-                Map.Objects[current.Y, current.X] is Door door)
+            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight && current.Y >= 0 &&
+                Map[current.X, current.Y] is Door door)
                 if (!door.isLocked)
                     door.OpenClose();
                 else if (door.isLocked && Player.HaveKey)

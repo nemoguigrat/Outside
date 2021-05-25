@@ -82,7 +82,7 @@ namespace UlernGame.Model
         }
 
         private bool CanMove(Point point) =>
-            point.X >= 0 && point.Y >= 0 && point.X < gameModel.Map.MapWidth && point.Y < gameModel.Map.MapHeight &&
-            !(gameModel.Map.Objects[point.Y, point.X] is Obstacle);
+            point.X >= 0 && point.Y >= 0 && point.X < MapCreator.MapWidth && point.Y < MapCreator.MapHeight &&
+            !(gameModel.Map[point.X, point.Y] is Obstacle);
     }
 }

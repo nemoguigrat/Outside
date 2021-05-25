@@ -7,7 +7,9 @@
       <e p="Outside" t="IncludeRecursive">
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Controller" t="Include" />
+        <e p="Controller" t="Include">
+          <e p="MenuDesign.cs" t="Include" />
+        </e>
         <e p="Fonts" t="Include">
           <e p="agency.ttf" t="Include" />
         </e>
@@ -58,6 +60,7 @@
         <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />
         <e p="Key.cs" t="Include" />
+        <e p="Levels.cs" t="Include" />
         <e p="MapCreator.cs" t="Include" />
         <e p="MapPoint.cs" t="Include" />
         <e p="Medkit.cs" t="Include" />

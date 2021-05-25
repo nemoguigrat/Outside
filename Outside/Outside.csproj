@@ -47,6 +47,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Controller\MenuDesign.cs" />
         <Compile Include="GameForm.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -118,9 +119,6 @@
       <EmbeddedResource Include="Resources\zombieUp.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Controller" />
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Include="Resources\wall.png">

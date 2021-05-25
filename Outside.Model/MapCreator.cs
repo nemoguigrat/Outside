@@ -4,47 +4,28 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Outside.Model;
 
 namespace UlernGame.Model
 {
-    public class MapCreator
+    public static class MapCreator
     {
-        private readonly char[,] Level = new char[9, 16]
-        {
-            {'n', 'n', 'n', 'w', 'w', 'n', 'w', 'w', 'n', 'n', 'n', 'n', 'l', 'w', 'n', 'n'},
-            {'n', 'w', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'w', 'w', 'n', 'n'},
-            {'n', 'w', 'n', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'n', 'n', 'n', 'n', 'n', 'n'},
-            {'n', 'w', 'n', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'n'},
-            {'n', 'w', 'n', 'w', 'n', 'd', 'n', 'n', 'n', 'n', 'w', 'n', 'w', 'w', 'w', 'n'},
-            {'n', 'w', 'n', 'w', 'w', 'w', 'w', 'w', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'n'},
-            {'n', 'w', 'n', 'n', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'w', 'w', 'n'},
-            {'n', 'w', 'w', 'n', 'w', 'n', 'w', 'n', 'w', 'w', 'w', 'n', 'w', 'n', 'w', 'n'},
-            {'n', 'n', 'n', 'n', 'w', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'}
-        };
+        public const int MapWidth = 16;
+        public const int MapHeight = 9;
 
-        public GameObject[,] Objects { get; }
-        public int MapWidth { get; }
-        public int MapHeight { get; }
-
-        public MapCreator()
+        public static GameObject[,] CreateMap(string map, string separator = "\r\n")
         {
-            Objects = CreateMap(Level);
-            MapWidth = Objects.GetLength(1);
-            MapHeight = Objects.GetLength(0);
-        }
-
-        private GameObject[,] CreateMap(char[,] map)
-        {
-            var width = map.GetLength(1);
-            var height = map.GetLength(0);
-            var result = new GameObject[height, width];
-            for (var i = 0; i < height; i++)
-            for (var j = 0; j < width; j++)
-                result[i, j] = CreateGameObject(map[i, j], j * 80, i * 80);
+            var rows = map.Split(new[] {separator}, StringSplitOptions.RemoveEmptyEntries);
+            if (rows.Select(z => z.Length).Distinct().Count() != 1)
+                throw new Exception($"Wrong map '{map}'");
+            var result = new GameObject[rows[0].Length, rows.Length];
+            for (var x = 0; x < rows[0].Length; x++)
+            for (var y = 0; y < rows.Length; y++)
+                result[x, y] = CreateGameObject(rows[y][x], x * 80, y * 80);
             return result;
         }
 
-        private GameObject CreateGameObject(char c, int x, int y)
+        private static GameObject CreateGameObject(char c, int x, int y)
         {
             switch (c)
             {
@@ -53,7 +34,7 @@ namespace UlernGame.Model
                 case 'd':
                     return new Door(x, y, false);
                 case 'l':
-                    return new Door(x,y, true);
+                    return new Door(x, y, true);
                 case 'n':
                     return null;
                 default:

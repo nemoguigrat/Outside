@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using Outside.Model;
+using UlernGame.Controller;
 
 namespace UlernGame
 {
@@ -17,50 +19,33 @@ namespace UlernGame
 
         public void AddControls()
         {
-            var gameName = new Label
-            {
-                Location = new Point(Width / 2 - 300, 150), BackColor = Color.Transparent, Size = new Size(600, 120),
-                ForeColor = Color.Azure, Font = new Font(FontFamily.GenericMonospace, 72, FontStyle.Regular),
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            gameName.Text = @"[Outside]";
+            var gameName = MenuDesign.MakeName(new Point(Width / 2 - 300, 150));
+            
+            var startButton = MenuDesign.MakeButton(new Point(Width / 2 - 130, 320), "Начать");
 
-            var startButton = new Button()
-            {
-                Text = "Начать",
-                Font = new Font(FontFamily.GenericMonospace, 26, FontStyle.Bold),
-                Location = new Point(Width / 2 - 130, 320),
-                Size = new Size(260, 60),
-                ForeColor = Color.Black,
-                BackColor = Color.White
-            };
-            
-            var tutorButton = new Button
-            {
-                Text = "Инструкция",
-                Font = new Font(FontFamily.GenericMonospace, 26, FontStyle.Bold),
-                Location = new Point(Width / 2 - 130, 420),
-                Size = new Size(260, 60),
-                ForeColor = Color.Black,
-                BackColor = Color.White
-            };
-            
-            var exitButton = new Button
-            {
-                Text = "Выйти",
-                Font = new Font(FontFamily.GenericMonospace, 26, FontStyle.Bold),
-                Location = new Point(Width / 2 - 130, 520),
-                Size = new Size(260, 60),
-                ForeColor = Color.Black,
-                BackColor = Color.White
-            };
-            
+            var tutorButton = MenuDesign.MakeButton(new Point(Width / 2 - 130, 420), "Инструкция");
+
+            var exitButton = MenuDesign.MakeButton(new Point(Width / 2 - 130, 520), "Выйти");
+                
             startButton.Click += (sender, args) =>
             {
-                new GameForm(Location).Show();
+                new GameForm(Location, Levels.Level1).Show();
                 Hide();
             };
+            
+            tutorButton.Click += (sender, args) => MessageBox.Show(
+                @"Задача:
+Найти ключ и дверь, к которой он подходит и выбраться из замка.
+Управление:
+W,A,S,D - Передвижение 
+F - Открыть/Закрыть дверь 
+Space - Выстрелить", 
+                "Инструкция", 
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.None);
+            
             exitButton.Click += (sender, args) => Application.Exit();
+            
             Controls.Add(startButton);
             Controls.Add(exitButton);
             Controls.Add(tutorButton);

@@ -18,18 +18,20 @@ namespace UlernGame
         private Game game;
         private Painter painter;
         private Timer mainTimer;
+        private string level;
 
-        public GameForm(Point location)
+        public GameForm(Point location, string level)
         {
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             BackColor = Color.Gray;
             Location = location;
+            this.level = level;
         }
 
         protected override void OnLoad(EventArgs eventArgs)
         {
-            game = new Game();
+            game = new Game(level);
             painter = new Painter(game);
             game.StartGame();
             AddControls();

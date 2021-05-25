@@ -33,7 +33,7 @@ namespace UlernGame.View
 
         private void DrawMap(Graphics gr)
         {
-            foreach (var e in Game.Map.Objects)
+            foreach (var e in Game.Map)
             {
                 if (e is Wall)
                     gr.DrawImage(sprites.Wall, e.X, e.Y);
@@ -76,7 +76,7 @@ namespace UlernGame.View
         {
             foreach (var bullet in Game.Bullets)
             {
-                g.FillEllipse(Brushes.Blue, bullet.X, bullet.Y, 6, 6);
+                g.FillEllipse(Brushes.Black, bullet.X, bullet.Y, 6, 6);
             }
         }
 

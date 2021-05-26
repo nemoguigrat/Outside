@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace UlernGame.Controller
+namespace Outside.Controller
 {
     public static class MenuDesign
     {
@@ -17,7 +17,7 @@ namespace UlernGame.Controller
                 BackColor = Color.White
             };
         }
-        
+
         public static Label MakeName(Point location) => new Label
         {
             Location = location, BackColor = Color.Transparent, Size = new Size(600, 120),

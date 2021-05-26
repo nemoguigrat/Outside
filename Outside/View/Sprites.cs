@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 
-namespace UlernGame.View
+namespace Outside.View
 {
     public class Sprites
     {
@@ -35,8 +35,8 @@ namespace UlernGame.View
             var directions = new[] {"Up", "Down", "Left", "Right"};
             foreach (var direction in directions)
             {
-                result[direction] = new Bitmap(Image.FromFile("Resources/" + $"{file}{direction}.png"), 
-                    new Size(50,50));
+                result[direction] = new Bitmap(Image.FromFile("Resources/" + $"{file}{direction}.png"),
+                    new Size(50, 50));
             }
 
             return result;

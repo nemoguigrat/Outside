@@ -50,7 +50,7 @@
         <e p="AmmunitionCrate.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Bullet.cs" t="Include" />
-        <e p="Directions.cs" t="Include" />
+        <e p="Direction.cs" t="Include" />
         <e p="Door.cs" t="Include" />
         <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />

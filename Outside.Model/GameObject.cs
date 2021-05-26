@@ -1,7 +1,6 @@
-﻿
-using System.Drawing;
+﻿using System.Drawing;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class GameObject
     {

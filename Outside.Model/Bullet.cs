@@ -1,11 +1,12 @@
 ﻿using System.Numerics;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class Bullet : GameObject
     {
-        public const int speed = 15;
-        public Directions Direction { get; }
+        private const int Speed = 15;
+        private Direction Direction { get; }
+
         public Bullet(Player player)
         {
             X = player.X + player.Width / 2;
@@ -17,17 +18,17 @@ namespace UlernGame.Model
         {
             switch (Direction)
             {
-                case Directions.Right:
-                    X += speed;
+                case Direction.Right:
+                    X += Speed;
                     break;
-                case Directions.Left:
-                    X -= speed;
+                case Direction.Left:
+                    X -= Speed;
                     break;
-                case Directions.Down:
-                    Y += speed;
+                case Direction.Down:
+                    Y += Speed;
                     break;
-                case Directions.Up:
-                    Y -= speed;
+                case Direction.Up:
+                    Y -= Speed;
                     break;
             }
         }

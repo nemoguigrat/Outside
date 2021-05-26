@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public static class MapCreator
     {

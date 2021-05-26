@@ -2,29 +2,29 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class Player : GameObject
     {
-        private const int maxAmmunition = 25;
-        private const int fullMagazine = 10;
-        private const int maxHeals = 100;
-        public const int speed = 5;
+        private const int MaxAmmunition = 25;
+        private const int FullMagazine = 10;
+        private const int MaxHeals = 100;
+        public const int Speed = 5;
         public int Ammunition { get; private set; }
         public int Magazine { get; private set; }
-        public Directions Direction { get; private set; }
+        public Direction Direction { get; private set; }
 
         public int Heals { get; private set; }
         public bool HaveKey { get; set; }
         public bool Alive { get; private set; }
-        
+
         public Player(int x, int y)
         {
-            Heals = maxHeals;
+            Heals = MaxHeals;
             X = x;
             Y = y;
-            Magazine = fullMagazine;
-            Ammunition = maxAmmunition;
+            Magazine = FullMagazine;
+            Ammunition = MaxAmmunition;
             Width = 50;
             Height = 50;
             HaveKey = false;
@@ -33,7 +33,7 @@ namespace UlernGame.Model
 
         public void Reload()
         {
-            var reload = fullMagazine - Magazine;
+            var reload = FullMagazine - Magazine;
             if (reload > 0 && Ammunition - reload >= 0)
                 Ammunition -= reload;
             Magazine += reload;
@@ -55,18 +55,18 @@ namespace UlernGame.Model
 
         public void Heal()
         {
-            if (Heals + Medkit.healCount <= maxHeals)
-                Heals += Medkit.healCount;
+            if (Heals + Medkit.HealCount <= MaxHeals)
+                Heals += Medkit.HealCount;
             else
-                Heals = maxHeals;
+                Heals = MaxHeals;
         }
 
         public void AddAmmo()
         {
-            if (Ammunition + AmmunitionCrate.ammoCount <= maxAmmunition)
-                Ammunition += AmmunitionCrate.ammoCount;
+            if (Ammunition + AmmunitionCrate.AmmoCount <= MaxAmmunition)
+                Ammunition += AmmunitionCrate.AmmoCount;
             else
-                Ammunition = maxAmmunition;
+                Ammunition = MaxAmmunition;
         }
 
         public void Move(Point point)
@@ -75,7 +75,7 @@ namespace UlernGame.Model
             Y = point.Y;
         }
 
-        public void SwitchDirection(Directions dir)
+        public void SwitchDirection(Direction dir)
         {
             Direction = dir;
         }

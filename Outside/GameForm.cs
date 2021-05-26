@@ -8,16 +8,16 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
-using UlernGame.Model;
-using UlernGame.View;
+using Outside.Model;
+using Outside.View;
 
-namespace UlernGame
+namespace Outside
 {
     public partial class GameForm : Form
     {
-        private Game game;
-        private Painter painter;
-        private Timer mainTimer;
+        private Game Game { get; }
+        private Painter Painter { get; }
+        private Timer MainTimer { get; }
 
         public GameForm(Point location, string level)
         {
@@ -27,30 +27,30 @@ namespace UlernGame
             BackColor = Color.Gray;
             Location = location;
             // Создание игры
-            game = new Game(level);
-            game.StartGame();
+            Game = new Game(level);
+            Game.StartGame();
             //Запуск таймеров
-            mainTimer = new Timer();
-            mainTimer.Interval = 20;
-            mainTimer.Tick += (sender, args) => TimerTick();
-            mainTimer.Start();
+            MainTimer = new Timer();
+            MainTimer.Interval = 20;
+            MainTimer.Tick += (sender, args) => TimerTick();
+            MainTimer.Start();
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
-            SetTimer(3000, () => game.SpawnMonsters()); //таймер спавна монстров 
-            SetTimer(1300, MonsterMovement); // обновление маршрута и движение монстра
+            SetTimer(1000, () => Game.SpawnMonsters()); //таймер спавна монстров 
+            SetTimer(1500, MonsterMovement); // обновление маршрута и движение монстра
             //Отрисовка
             AddControls();
-            painter = new Painter(game);
-            Paint += (sender, args) => painter.Paint(args.Graphics);
+            Painter = new Painter(Game);
+            Paint += (sender, args) => Painter.Paint(args.Graphics);
         }
-        
+
         protected override void OnKeyDown(KeyEventArgs key)
         {
-            game.PlayerMoveDirection(key.KeyData);
+            Game.PlayerMoveDirection(key.KeyData);
         }
 
         protected override void OnKeyUp(KeyEventArgs key)
         {
-            game.PlayerAction(key.KeyData);
+            Game.PlayerAction(key.KeyData);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -58,7 +58,7 @@ namespace UlernGame
             var form = new GameOverForm(Location);
             form.Show();
         }
-        
+
         private void AddControls()
         {
             var ammunitionIndicator = new Label
@@ -71,30 +71,31 @@ namespace UlernGame
 
         private void DamageTimerTick()
         {
-            if (game.CheckCollisionWithEnemy())
-                game.Player.ReserveDamage(Monster.damage);
+            if (Game.CheckCollisionWithEnemy())
+                Game.Player.ReserveDamage(Monster.Damage);
         }
 
         private void MonsterMovement()
         {
-            game.Monsters.ForEach(x => x.FindTarget());
+            Game.Monsters.ForEach(x => x.FindTarget());
         }
 
         private void TimerTick()
         {
-            if (game.GameOver || !game.Player.Alive)
+            if (Game.GameOver || !Game.Player.Alive)
             {
-                mainTimer.Stop();
+                MainTimer.Stop();
                 Close();
             }
-            game.Bullets.ForEach(x => x.Move());
-            game.Monsters.ForEach(x => x.Move());
 
-            if (game.Bullets.Count > 0)
-                game.BulletCollision();
-            game.CheckCollisionWithItems();
+            Game.Bullets.ForEach(x => x.Move());
+            Game.Monsters.ForEach(x => x.Move());
+
+            if (Game.Bullets.Count > 0)
+                Game.BulletCollision();
+            Game.CheckCollisionWithItems();
             if (Controls.Count > 0)
-                Controls[0].Text = $"{game.Player.Magazine} / {game.Player.Ammunition}";
+                Controls[0].Text = $"{Game.Player.Magazine} / {Game.Player.Ammunition}";
             Invalidate();
         }
 

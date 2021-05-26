@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace UlernGame
+namespace Outside
 {
     partial class GameOverForm
     {

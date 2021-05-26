@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class Monster : GameObject
     {
-        public const int damage = 20;
-        public const int speed = 2;
+        public const int Damage = 20;
+        private const int Speed = 2;
         private readonly Game gameModel;
-        public Directions Direction { get; private set; }
+        public Direction Direction { get; private set; }
         private Point Deltas { get; set; }
         private Point Target { get; set; }
 
@@ -27,30 +27,31 @@ namespace UlernGame.Model
         {
             gameModel.Monsters.Remove(this);
         }
-        
+
         public void Move()
         {
             if (X == Target.X * MapCreator.TileSize && Y == Target.Y * MapCreator.TileSize) return;
-            X += speed * Deltas.X;
-            Y += speed * Deltas.Y;
+            X += Speed * Deltas.X;
+            Y += Speed * Deltas.Y;
         }
 
         public void FindTarget()
         {
             Target = GetNextPos();
-            Deltas = new Point(Math.Sign(Target.X - X / MapCreator.TileSize), 
+            Deltas = new Point(Math.Sign(Target.X - X / MapCreator.TileSize),
                 Math.Sign(Target.Y - Y / MapCreator.TileSize));
             if (Deltas.X == 0)
-                Direction = Deltas.Y > 0 ? Directions.Down : Directions.Up;
+                Direction = Deltas.Y > 0 ? Direction.Down : Direction.Up;
             if (Deltas.Y == 0)
-                Direction = Deltas.X > 0 ? Directions.Right : Directions.Left;
+                Direction = Deltas.X > 0 ? Direction.Right : Direction.Left;
         }
-        
-        
+
+
         private Point GetNextPos()
         {
             var visited = new HashSet<Point>();
-            var playerPos = new Point(gameModel.Player.X / MapCreator.TileSize, gameModel.Player.Y / MapCreator.TileSize);
+            var playerPos = new Point(gameModel.Player.X / MapCreator.TileSize,
+                gameModel.Player.Y / MapCreator.TileSize);
             var queue = new Queue<Point>();
             var start = new Point(X / MapCreator.TileSize, Y / MapCreator.TileSize);
             queue.Enqueue(playerPos);
@@ -77,6 +78,6 @@ namespace UlernGame.Model
 
         private bool CanMove(Point point) =>
             point.X >= 0 && point.Y >= 0 && point.X < MapCreator.MapWidth && point.Y < MapCreator.MapHeight &&
-            !(gameModel.Map[point.X, point.Y] is Obstacle);
+            (gameModel.Map[point.X, point.Y] == null || (gameModel.Map[point.X, point.Y] is Door door && door.IsOpen));
     }
 }

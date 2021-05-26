@@ -1,6 +1,6 @@
-﻿namespace UlernGame.Model
+﻿namespace Outside.Model
 {
-    public enum Directions
+    public enum Direction
     {
         Up,
         Down,

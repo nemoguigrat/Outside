@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Outside.Model;
-using UlernGame.Model;
 
-namespace UlernGame
+namespace Outside
 {
     public class Game
     {
@@ -15,7 +14,7 @@ namespace UlernGame
         public List<Item> Items { get; }
         public GameObject[,] Map { get; }
         public bool GameOver { get; private set; }
-        private Dictionary<Directions, Point> Deltas { get; }
+        private Dictionary<Direction, Point> Deltas { get; }
 
 
         public Game(string level)
@@ -40,13 +39,12 @@ namespace UlernGame
             var rnd = new Random();
             var x = rnd.Next(MapCreator.MapWidth - 1);
             var y = rnd.Next(MapCreator.MapHeight - 1);
-            if (Map[x, y] == null && 
-                (x > Player.X / MapCreator.TileSize + 2 || x < Player.X / MapCreator.TileSize - 2) && 
+            if (Map[x, y] == null &&
+                (x > Player.X / MapCreator.TileSize + 2 || x < Player.X / MapCreator.TileSize - 2) &&
                 (y > Player.Y / MapCreator.TileSize + 2 || y < Player.Y / MapCreator.TileSize - 2))
                 Monsters.Add(new Monster(x * MapCreator.TileSize, y * MapCreator.TileSize, this));
         }
 
-        
 
         public void CheckCollisionWithItems()
         {
@@ -101,32 +99,32 @@ namespace UlernGame
             switch (key)
             {
                 case Keys.A:
-                    Player.SwitchDirection(Directions.Left);
-                    if (!CheckCollisionWithObstacle(new Point(Player.X - Player.speed, Player.Y), Player.Width,
+                    Player.SwitchDirection(Direction.Left);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X - Player.Speed, Player.Y), Player.Width,
                         Player.Height))
-                        Player.Move(new Point(Player.X - Player.speed, Player.Y));
+                        Player.Move(new Point(Player.X - Player.Speed, Player.Y));
                     break;
                 case Keys.D:
-                    Player.SwitchDirection(Directions.Right);
-                    if (!CheckCollisionWithObstacle(new Point(Player.X + Player.speed, Player.Y), Player.Width,
+                    Player.SwitchDirection(Direction.Right);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X + Player.Speed, Player.Y), Player.Width,
                         Player.Height))
-                        Player.Move(new Point(Player.X + Player.speed, Player.Y));
+                        Player.Move(new Point(Player.X + Player.Speed, Player.Y));
                     break;
                 case Keys.S:
-                    Player.SwitchDirection(Directions.Down);
-                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y + Player.speed), Player.Width,
+                    Player.SwitchDirection(Direction.Down);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y + Player.Speed), Player.Width,
                         Player.Height))
-                        Player.Move(new Point(Player.X, Player.Y + Player.speed));
+                        Player.Move(new Point(Player.X, Player.Y + Player.Speed));
                     break;
                 case Keys.W:
-                    Player.SwitchDirection(Directions.Up);
-                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y - Player.speed), Player.Width,
+                    Player.SwitchDirection(Direction.Up);
+                    if (!CheckCollisionWithObstacle(new Point(Player.X, Player.Y - Player.Speed), Player.Width,
                         Player.Height))
-                        Player.Move(new Point(Player.X, Player.Y - Player.speed));
+                        Player.Move(new Point(Player.X, Player.Y - Player.Speed));
                     break;
             }
         }
-        
+
         public void PlayerAction(Keys key)
         {
             switch (key)
@@ -143,21 +141,23 @@ namespace UlernGame
                     break;
             }
         }
-        
+
         private void SpawnKey()
         {
             var rnd = new Random();
-            int x; int y;
+            int x;
+            int y;
             while (true)
             {
-                x = rnd.Next(MapCreator.MapWidth - 1); 
+                x = rnd.Next(MapCreator.MapWidth - 1);
                 y = rnd.Next(MapCreator.MapHeight - 1);
                 if (Map[x, y] == null)
                     break;
             }
+
             Items.Add(new Key(x * MapCreator.TileSize + 15, y * MapCreator.TileSize + 15));
         }
-        
+
         private Monster CheckCollisionWithBullet(Bullet bullet)
         {
             foreach (var monster in Monsters)
@@ -174,22 +174,23 @@ namespace UlernGame
         {
             var pos = new Point(Player.X / MapCreator.TileSize, Player.Y / MapCreator.TileSize);
             var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
-            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight && current.Y >= 0 &&
+            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight &&
+                current.Y >= 0 &&
                 Map[current.X, current.Y] is Door door)
-                if (!door.isLocked)
+                if (!door.IsLocked)
                     door.OpenClose();
-                else if (door.isLocked && Player.HaveKey)
+                else if (door.IsLocked && Player.HaveKey)
                     GameOver = true;
         }
-        
+
         private bool CheckCollisionWithObstacle(Point pos, int height, int width)
         {
-            if (MapCreator.MapHeight * MapCreator.TileSize < pos.Y + height || pos.Y < 0 || 
+            if (MapCreator.MapHeight * MapCreator.TileSize < pos.Y + height || pos.Y < 0 ||
                 MapCreator.MapWidth * MapCreator.TileSize < pos.X + width || pos.X < 0)
                 return true;
             foreach (var e in Map)
             {
-                if ((e is Wall || e is Door && !(e as Door).isOpen) &&
+                if ((e is Wall || e is Door && !(e as Door).IsOpen) &&
                     (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
                     (e.Y <= pos.Y + height && pos.Y <= e.Y + e.Height))
                     return true;
@@ -197,7 +198,7 @@ namespace UlernGame
 
             return false;
         }
-        
+
         private void RandomSpawnBoosters(Monster monster)
         {
             var random = new Random();
@@ -207,15 +208,15 @@ namespace UlernGame
             else if (next > 65)
                 Items.Add(new AmmunitionCrate(monster.X, monster.Y));
         }
-        
-        private Dictionary<Directions, Point> FindDeltas()
+
+        private Dictionary<Direction, Point> FindDeltas()
         {
-            var result = new Dictionary<Directions, Point>
+            var result = new Dictionary<Direction, Point>
             {
-                [Directions.Down] = new Point(0, 1),
-                [Directions.Up] = new Point(0, -1),
-                [Directions.Right] = new Point(1, 0),
-                [Directions.Left] = new Point(-1, 0)
+                [Direction.Down] = new Point(0, 1),
+                [Direction.Up] = new Point(0, -1),
+                [Direction.Right] = new Point(1, 0),
+                [Direction.Left] = new Point(-1, 0)
             };
             return result;
         }

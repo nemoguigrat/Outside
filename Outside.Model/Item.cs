@@ -1,4 +1,4 @@
-﻿using UlernGame.Model;
+﻿using Outside.Model;
 
 namespace Outside.Model
 {

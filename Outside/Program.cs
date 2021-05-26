@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace UlernGame
+namespace Outside
 {
     static class Program
     {

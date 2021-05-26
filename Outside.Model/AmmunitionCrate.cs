@@ -1,14 +1,12 @@
-﻿
-
-using System.Drawing;
+﻿using System.Drawing;
 using Outside.Model;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class AmmunitionCrate : Item
     {
-        public const int ammoCount = 15;
-        
+        public const int AmmoCount = 15;
+
         public AmmunitionCrate(int x, int y)
         {
             X = x;

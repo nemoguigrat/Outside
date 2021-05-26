@@ -1,22 +1,22 @@
 ﻿using System.Drawing;
 
-namespace UlernGame.Model
+namespace Outside.Model
 {
     public class Door : Obstacle
     {
-        public bool isOpen = false;
-        public bool isLocked;
-        
+        public bool IsOpen { get; private set; }
+        public bool IsLocked { get; }
+
         public Door(int x, int y, bool locked)
         {
             X = x;
             Y = y;
-            isLocked = locked;
+            IsLocked = locked;
         }
 
         public void OpenClose()
         {
-            isOpen = !isOpen;
+            IsOpen = !IsOpen;
         }
     }
 }

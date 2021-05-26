@@ -2,7 +2,7 @@
 
 namespace Outside.Model
 {
-    public class Levels
+    public static class Levels
     {
         public const string Level1 = @"
 nnnwwnwwnnnnlwnn
@@ -14,7 +14,7 @@ nwnwwwwwwnnnnnnn
 nwnnwnwnwnwnwwwn
 nwwnwnwnwwwnwnwn
 nnnnwnnnnnnnnnnn";
-        
+
         public const string Level2 = @"
 nnnwwnwwnnnnlwnn
 nwnnwnnnnwnwwwnn
@@ -25,7 +25,7 @@ nwnnnnnnnnnnnnnn
 nwnnwnwnwnwnwwwn
 nwwnwnwnwwwnwnwn
 nnnnwnnnnnnnnnnn";
-        
+
         public const string Level3 = @"
 nnnwwnwwnnnnlwnn
 nwnnwnnnnwnwwwnn
@@ -36,7 +36,7 @@ nwnwwwwwwnnnnnnn
 nwnnwnwnwnwnwwwn
 nwwnwnwnwwwnwnwn
 nnnnwnnnnnnnnnnn";
-        
+
         public const string Level4 = @"
 nnnwwnwwnnnnlwnn
 nwnnwnnnnwnwwwnn
@@ -50,13 +50,13 @@ nnnnwnnnnnnnnnnn";
 
         public static Dictionary<string, string> MakeDict()
         {
-                return new Dictionary<string, string>
-                {
-                        ["Level1"] = Level1,
-                        ["Level2"] = Level2,
-                        ["Level3"] = Level3,
-                        ["Level4"] = Level4,
-                };
+            return new Dictionary<string, string>
+            {
+                ["Level1"] = Level1,
+                ["Level2"] = Level2,
+                ["Level3"] = Level3,
+                ["Level4"] = Level4,
+            };
         }
     }
 }

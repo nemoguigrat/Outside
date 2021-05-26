@@ -3,9 +3,8 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Outside.Model;
-using UlernGame.Model;
 
-namespace UlernGame.View
+namespace Outside.View
 {
     public class Painter
     {
@@ -16,7 +15,7 @@ namespace UlernGame.View
         {
             Game = game;
         }
-        
+
         public void Paint(Graphics graphic)
         {
             DrawMap(graphic);
@@ -28,7 +27,7 @@ namespace UlernGame.View
             graphic.FillRectangle(Brushes.PaleGreen,
                 new Rectangle(20, 20, Game.Player.Heals * 5, 20));
             if (Game.Player.HaveKey)
-                graphic.DrawImage(sprites.Key, 540, 20, 20,20);
+                graphic.DrawImage(sprites.Key, 540, 20, 20, 20);
         }
 
         private void DrawMap(Graphics gr)
@@ -37,9 +36,9 @@ namespace UlernGame.View
             {
                 if (e is Wall)
                     gr.DrawImage(sprites.Wall, e.X, e.Y);
-                else if (e is Door && (e as Door).isLocked)
+                else if (e is Door && (e as Door).IsLocked)
                     gr.DrawImage(sprites.LockedDoor, e.X, e.Y);
-                else if (e is Door && (e as Door).isOpen)
+                else if (e is Door && (e as Door).IsOpen)
                     gr.DrawImage(sprites.OpenDoor, e.X, e.Y);
                 else if (e is Door)
                     gr.DrawImage(sprites.ClosedDoor, e.X, e.Y);
@@ -85,8 +84,8 @@ namespace UlernGame.View
             var random = new Random();
             var size = 200 + random.Next(-4, 4);
             var path = new GraphicsPath();
-            
-            path.AddEllipse(Game.Player.X - (size - Game.Player.Width) / 2, 
+
+            path.AddEllipse(Game.Player.X - (size - Game.Player.Width) / 2,
                 Game.Player.Y - (size - Game.Player.Height) / 2, size, size);
             path.AddRectangle(new Rectangle(0, 0, 1280, 720));
             gr.FillPath(new SolidBrush(Color.Black), path);

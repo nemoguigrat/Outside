@@ -9,8 +9,8 @@ namespace UlernGame.View
 {
     public class Painter
     {
-        public Game Game { get; }
-        public readonly Sprites sprites = new Sprites();
+        private Game Game { get; }
+        private readonly Sprites sprites = new Sprites();
 
         public Painter(Game game)
         {
@@ -24,7 +24,7 @@ namespace UlernGame.View
             DrawMonster(graphic);
             DrawBullets(graphic);
             DrawBoosters(graphic);
-            DrawFlashLight(graphic);
+            // DrawFlashLight(graphic);
             graphic.FillRectangle(Brushes.PaleGreen,
                 new Rectangle(20, 20, Game.Player.Heals * 5, 20));
             if (Game.Player.HaveKey)
@@ -48,14 +48,14 @@ namespace UlernGame.View
 
         private void DrawBoosters(Graphics gr)
         {
-            for (var i = 0; i < Game.Boosters.Count; i++)
+            for (var i = 0; i < Game.Items.Count; i++)
             {
-                if (Game.Boosters[i] is Medkit)
-                    gr.DrawImage(sprites.Medkit, Game.Boosters[i].X, Game.Boosters[i].Y);
-                if (Game.Boosters[i] is AmmunitionCrate)
-                    gr.DrawImage(sprites.AmmunitionCrate, Game.Boosters[i].X, Game.Boosters[i].Y);
-                if (Game.Boosters[i] is Key)
-                    gr.DrawImage(sprites.Key, Game.Boosters[i].X, Game.Boosters[i].Y, 40, 40);
+                if (Game.Items[i] is Medkit)
+                    gr.DrawImage(sprites.Medkit, Game.Items[i].X, Game.Items[i].Y);
+                if (Game.Items[i] is AmmunitionCrate)
+                    gr.DrawImage(sprites.AmmunitionCrate, Game.Items[i].X, Game.Items[i].Y);
+                if (Game.Items[i] is Key)
+                    gr.DrawImage(sprites.Key, Game.Items[i].X, Game.Items[i].Y, 40, 40);
             }
         }
 
@@ -83,7 +83,7 @@ namespace UlernGame.View
         private void DrawFlashLight(Graphics gr)
         {
             var random = new Random();
-            var size = 180 + random.Next(-4, 4);
+            var size = 200 + random.Next(-4, 4);
             var path = new GraphicsPath();
             
             path.AddEllipse(Game.Player.X - (size - Game.Player.Width) / 2, 

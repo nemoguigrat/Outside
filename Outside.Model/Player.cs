@@ -6,7 +6,7 @@ namespace UlernGame.Model
 {
     public class Player : GameObject
     {
-        private const int maxAmmunition = 50;
+        private const int maxAmmunition = 25;
         private const int fullMagazine = 10;
         private const int maxHeals = 100;
         public const int speed = 5;
@@ -14,7 +14,6 @@ namespace UlernGame.Model
         public int Magazine { get; private set; }
         public Directions Direction { get; private set; }
 
-        public int Damage { get; }
         public int Heals { get; private set; }
         public bool HaveKey { get; set; }
         public bool Alive { get; private set; }
@@ -26,7 +25,6 @@ namespace UlernGame.Model
             Y = y;
             Magazine = fullMagazine;
             Ammunition = maxAmmunition;
-            Damage = 10;
             Width = 50;
             Height = 50;
             HaveKey = false;
@@ -63,7 +61,7 @@ namespace UlernGame.Model
                 Heals = maxHeals;
         }
 
-        public void AmmoAdd()
+        public void AddAmmo()
         {
             if (Ammunition + AmmunitionCrate.ammoCount <= maxAmmunition)
                 Ammunition += AmmunitionCrate.ammoCount;

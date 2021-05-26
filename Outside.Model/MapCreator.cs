@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using Outside.Model;
 
 namespace UlernGame.Model
 {
@@ -12,6 +7,7 @@ namespace UlernGame.Model
     {
         public const int MapWidth = 16;
         public const int MapHeight = 9;
+        public const int TileSize = 80;
 
         public static GameObject[,] CreateMap(string map, string separator = "\r\n")
         {
@@ -21,7 +17,7 @@ namespace UlernGame.Model
             var result = new GameObject[rows[0].Length, rows.Length];
             for (var x = 0; x < rows[0].Length; x++)
             for (var y = 0; y < rows.Length; y++)
-                result[x, y] = CreateGameObject(rows[y][x], x * 80, y * 80);
+                result[x, y] = CreateGameObject(rows[y][x], x * TileSize, y * TileSize);
             return result;
         }
 

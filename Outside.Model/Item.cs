@@ -2,9 +2,9 @@
 
 namespace Outside.Model
 {
-    public class Boosters : GameObject
+    public class Item : GameObject
     {
-        public Boosters()
+        public Item()
         {
             Width = 40;
             Height = 40;

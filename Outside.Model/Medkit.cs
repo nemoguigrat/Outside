@@ -3,7 +3,7 @@ using Outside.Model;
 
 namespace UlernGame.Model
 {
-    public class Medkit : Boosters
+    public class Medkit : Item
     {
         public const int healCount = 50;
 

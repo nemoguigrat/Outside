@@ -10,9 +10,6 @@
         <e p="Controller" t="Include">
           <e p="MenuDesign.cs" t="Include" />
         </e>
-        <e p="Fonts" t="Include">
-          <e p="agency.ttf" t="Include" />
-        </e>
         <e p="GameForm.cs" t="Include" />
         <e p="GameForm.Designer.cs" t="Include" />
         <e p="GameForm.resx" t="Include" />
@@ -45,7 +42,6 @@
           <e p="zombieUp.png" t="Include" />
         </e>
         <e p="View" t="Include">
-          <e p="CustomFonts.cs" t="Include" />
           <e p="Painter.cs" t="Include" />
           <e p="Sprites.cs" t="Include" />
         </e>
@@ -53,27 +49,24 @@
       <e p="Outside.Model" t="IncludeRecursive">
         <e p="AmmunitionCrate.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Boosters.cs" t="Include" />
         <e p="Bullet.cs" t="Include" />
         <e p="Directions.cs" t="Include" />
         <e p="Door.cs" t="Include" />
         <e p="Game.cs" t="Include" />
         <e p="GameObject.cs" t="Include" />
+        <e p="Item.cs" t="Include" />
         <e p="Key.cs" t="Include" />
         <e p="Levels.cs" t="Include" />
         <e p="MapCreator.cs" t="Include" />
-        <e p="MapPoint.cs" t="Include" />
         <e p="Medkit.cs" t="Include" />
         <e p="Monster.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
-        <e p="Objects.cs" t="Include" />
         <e p="Obstacle.cs" t="Include" />
         <e p="Outside.Model.csproj" t="IncludeRecursive" />
         <e p="Player.cs" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
         </e>
-        <e p="Thorn.cs" t="Include" />
         <e p="Wall.cs" t="Include" />
       </e>
       <e p="Outside.Tests" t="IncludeRecursive">

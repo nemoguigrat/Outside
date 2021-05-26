@@ -17,7 +17,7 @@ namespace UlernGame
             AddControls();
         }
 
-        public void AddControls()
+        private void AddControls()
         {
             var gameName = MenuDesign.MakeName(new Point(Width / 2 - 300, 150));
             
@@ -35,11 +35,12 @@ namespace UlernGame
             
             tutorButton.Click += (sender, args) => MessageBox.Show(
                 @"Задача:
-Найти ключ и дверь, к которой он подходит и выбраться из замка.
+    Найти ключ и дверь, к которой он подходит и выбраться из замка.
+
 Управление:
-W,A,S,D - Передвижение 
-F - Открыть/Закрыть дверь 
-Space - Выстрелить", 
+    W,A,S,D - Передвижение 
+    F - Открыть/Закрыть дверь 
+    Space - Выстрелить", 
                 "Инструкция", 
                 MessageBoxButtons.OK, 
                 MessageBoxIcon.None);

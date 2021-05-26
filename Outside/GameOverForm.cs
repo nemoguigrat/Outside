@@ -10,8 +10,8 @@ namespace UlernGame
 {
     public partial class GameOverForm : Form
     {
-        public string CurrentLevel { get; private set; }
-        public Dictionary<string, string> LevelsDict { get; }
+        private string CurrentLevel { get; set; }
+        private Dictionary<string, string> LevelsDict { get; }
         public GameOverForm(Point location)
         {
             DoubleBuffered = true;
@@ -24,7 +24,7 @@ namespace UlernGame
             AddControls();
         }
 
-        public void AddControls()
+        private void AddControls()
         {
             var gameName = MenuDesign.MakeName(new Point(Width / 2 - 300, 150));
             var startButton = MenuDesign.MakeButton(new Point(Width / 6 - 130, 320), "Начать");

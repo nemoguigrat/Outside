@@ -7,11 +7,12 @@ namespace UlernGame.Model
 {
     public class Monster : GameObject
     {
-        private readonly Game gameModel;
         public const int damage = 20;
         public const int speed = 2;
-
+        private readonly Game gameModel;
         public Directions Direction { get; private set; }
+        private Point Deltas { get; set; }
+        private Point Target { get; set; }
 
         public Monster(int x, int y, Game gameModel)
         {
@@ -27,38 +28,31 @@ namespace UlernGame.Model
             gameModel.Monsters.Remove(this);
         }
         
-        //алгоритм движения и нахождения игрокка будет переработан (возможно через обход в ширину)
-        public void MoveTo()
+        public void Move()
         {
-            // var vector = GetNextPos();
-            
-            // if (!gameModel.CheckCollisionWithObstacle(new Point(X + deltaX * speed, Y + deltaY * speed), Width,
-            //     Height))
-            // {
-            //     X += deltaX * speed;
-            //     Y += deltaY * speed;
-            // }
-
-            var vector = GetNextPos();
-            
-            var deltaX = Math.Sign(vector.X - X / 80);
-            var deltaY = Math.Sign(vector.Y - Y / 80);
-            if (deltaX == 0)
-                Direction = deltaY > 0 ? Directions.Down : Directions.Up;
-            if (deltaY == 0)
-                Direction = deltaX > 0 ? Directions.Right : Directions.Left;
-            
-            X = vector.X * 80;
-            Y = vector.Y * 80;
+            if (X == Target.X * MapCreator.TileSize && Y == Target.Y * MapCreator.TileSize) return;
+            X += speed * Deltas.X;
+            Y += speed * Deltas.Y;
         }
 
-
-        public Point GetNextPos()
+        public void FindTarget()
+        {
+            Target = GetNextPos();
+            Deltas = new Point(Math.Sign(Target.X - X / MapCreator.TileSize), 
+                Math.Sign(Target.Y - Y / MapCreator.TileSize));
+            if (Deltas.X == 0)
+                Direction = Deltas.Y > 0 ? Directions.Down : Directions.Up;
+            if (Deltas.Y == 0)
+                Direction = Deltas.X > 0 ? Directions.Right : Directions.Left;
+        }
+        
+        
+        private Point GetNextPos()
         {
             var visited = new HashSet<Point>();
-            var playerPos = new Point(gameModel.Player.X / 80, gameModel.Player.Y / 80);
+            var playerPos = new Point(gameModel.Player.X / MapCreator.TileSize, gameModel.Player.Y / MapCreator.TileSize);
             var queue = new Queue<Point>();
-            var start = new Point(X / 80, Y / 80);
+            var start = new Point(X / MapCreator.TileSize, Y / MapCreator.TileSize);
             queue.Enqueue(playerPos);
             visited.Add(playerPos);
             while (queue.Count != 0)

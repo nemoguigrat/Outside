@@ -12,10 +12,11 @@ namespace UlernGame
         public Player Player { get; private set; }
         public List<Monster> Monsters { get; }
         public List<Bullet> Bullets { get; }
-        public List<Boosters> Boosters { get; }
+        public List<Item> Items { get; }
         public GameObject[,] Map { get; }
-        public Dictionary<Directions, Point> Deltas { get; }
         public bool GameOver { get; private set; }
+        private Dictionary<Directions, Point> Deltas { get; }
+
 
         public Game(string level)
         {
@@ -23,14 +24,14 @@ namespace UlernGame
             Map = MapCreator.CreateMap(level);
             Monsters = new List<Monster>();
             Bullets = new List<Bullet>();
-            Boosters = new List<Boosters>();
+            Items = new List<Item>();
             Deltas = FindDeltas();
         }
 
         public void StartGame()
         {
-            Player = new Player(8 * 80 + 15, 3 * 80 + 15);
-            Boosters.Add(new Key(9 * 80 + 15, 3 * 80 + 15));
+            Player = new Player(8 * MapCreator.TileSize + 15, 3 * MapCreator.TileSize + 15);
+            SpawnKey();
             SpawnMonsters();
         }
 
@@ -39,38 +40,27 @@ namespace UlernGame
             var rnd = new Random();
             var x = rnd.Next(MapCreator.MapWidth - 1);
             var y = rnd.Next(MapCreator.MapHeight - 1);
-            if (Map[x, y] == null)
-                Monsters.Add(new Monster(x * 80 + 10, y * 80 + 10, this));
+            if (Map[x, y] == null && 
+                (x > Player.X / MapCreator.TileSize + 2 || x < Player.X / MapCreator.TileSize - 2) && 
+                (y > Player.Y / MapCreator.TileSize + 2 || y < Player.Y / MapCreator.TileSize - 2))
+                Monsters.Add(new Monster(x * MapCreator.TileSize, y * MapCreator.TileSize, this));
         }
 
-        public bool CheckCollisionWithObstacle(Point pos, int height, int width)
-        {
-            if (MapCreator.MapHeight * 80 < pos.Y + height || pos.Y < 0 || MapCreator.MapWidth * 80 < pos.X + width || pos.X < 0)
-                return true;
-            foreach (var e in Map)
-            {
-                if ((e is Wall || e is Door && !(e as Door).isOpen) &&
-                    (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
-                    (e.Y <= pos.Y + height && pos.Y <= e.Y + e.Height))
-                    return true;
-            }
+        
 
-            return false;
-        }
-
-        public void CheckCollisionWithBoosters()
+        public void CheckCollisionWithItems()
         {
-            for (var i = 0; i < Boosters.Count; i++)
-                if (Boosters[i].X <= Player.X + Player.Width && Player.X <= Boosters[i].X + Boosters[i].Width &&
-                    Boosters[i].Y <= Player.Y + Player.Height && Player.Y <= Boosters[i].Y + Boosters[i].Height)
+            for (var i = 0; i < Items.Count; i++)
+                if (Items[i].X <= Player.X + Player.Width && Player.X <= Items[i].X + Items[i].Width &&
+                    Items[i].Y <= Player.Y + Player.Height && Player.Y <= Items[i].Y + Items[i].Height)
                 {
-                    if (Boosters[i] is Medkit)
+                    if (Items[i] is Medkit)
                         Player.Heal();
-                    else if (Boosters[i] is AmmunitionCrate)
-                        Player.AmmoAdd();
-                    else if (Boosters[i] is Key)
+                    else if (Items[i] is AmmunitionCrate)
+                        Player.AddAmmo();
+                    else if (Items[i] is Key)
                         Player.HaveKey = true;
-                    Boosters.Remove(Boosters[i]);
+                    Items.Remove(Items[i]);
                 }
         }
 
@@ -84,18 +74,6 @@ namespace UlernGame
             }
 
             return false;
-        }
-
-        public Monster CheckCollisionWithBullet(Bullet bullet)
-        {
-            foreach (var monster in Monsters)
-            {
-                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Width &&
-                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Height)
-                    return monster;
-            }
-
-            return null;
         }
 
         public void BulletCollision()
@@ -116,16 +94,6 @@ namespace UlernGame
                     Bullets.Remove(Bullets[i]);
                 }
             }
-        }
-
-        public void RandomSpawnBoosters(Monster monster)
-        {
-            var random = new Random();
-            var next = random.Next(0, 100);
-            if (next > 90)
-                Boosters.Add(new Medkit(monster.X, monster.Y));
-            else if (next > 65)
-                Boosters.Add(new AmmunitionCrate(monster.X, monster.Y));
         }
 
         public void PlayerMoveDirection(Keys key)
@@ -158,19 +126,7 @@ namespace UlernGame
                     break;
             }
         }
-
-        private void OpenDoor()
-        {
-            var pos = new Point(Player.X / 80, Player.Y / 80);
-            var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
-            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight && current.Y >= 0 &&
-                Map[current.X, current.Y] is Door door)
-                if (!door.isLocked)
-                    door.OpenClose();
-                else if (door.isLocked && Player.HaveKey)
-                    GameOver = true;
-        }
-
+        
         public void PlayerAction(Keys key)
         {
             switch (key)
@@ -187,7 +143,71 @@ namespace UlernGame
                     break;
             }
         }
+        
+        private void SpawnKey()
+        {
+            var rnd = new Random();
+            int x; int y;
+            while (true)
+            {
+                x = rnd.Next(MapCreator.MapWidth - 1); 
+                y = rnd.Next(MapCreator.MapHeight - 1);
+                if (Map[x, y] == null)
+                    break;
+            }
+            Items.Add(new Key(x * MapCreator.TileSize + 15, y * MapCreator.TileSize + 15));
+        }
+        
+        private Monster CheckCollisionWithBullet(Bullet bullet)
+        {
+            foreach (var monster in Monsters)
+            {
+                if (monster.X <= bullet.X && bullet.X <= monster.X + monster.Width &&
+                    monster.Y <= bullet.Y && bullet.Y <= monster.Y + monster.Height)
+                    return monster;
+            }
 
+            return null;
+        }
+
+        private void OpenDoor()
+        {
+            var pos = new Point(Player.X / MapCreator.TileSize, Player.Y / MapCreator.TileSize);
+            var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
+            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight && current.Y >= 0 &&
+                Map[current.X, current.Y] is Door door)
+                if (!door.isLocked)
+                    door.OpenClose();
+                else if (door.isLocked && Player.HaveKey)
+                    GameOver = true;
+        }
+        
+        private bool CheckCollisionWithObstacle(Point pos, int height, int width)
+        {
+            if (MapCreator.MapHeight * MapCreator.TileSize < pos.Y + height || pos.Y < 0 || 
+                MapCreator.MapWidth * MapCreator.TileSize < pos.X + width || pos.X < 0)
+                return true;
+            foreach (var e in Map)
+            {
+                if ((e is Wall || e is Door && !(e as Door).isOpen) &&
+                    (e.X <= pos.X + width && pos.X <= e.X + e.Width) &&
+                    (e.Y <= pos.Y + height && pos.Y <= e.Y + e.Height))
+                    return true;
+            }
+
+            return false;
+        }
+        
+        private void RandomSpawnBoosters(Monster monster)
+        {
+            var random = new Random();
+            var next = random.Next(0, 100);
+            if (next > 90)
+                Items.Add(new Medkit(monster.X, monster.Y));
+            else if (next > 65)
+                Items.Add(new AmmunitionCrate(monster.X, monster.Y));
+        }
+        
         private Dictionary<Directions, Point> FindDeltas()
         {
             var result = new Dictionary<Directions, Point>

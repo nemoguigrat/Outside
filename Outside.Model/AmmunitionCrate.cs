@@ -5,7 +5,7 @@ using Outside.Model;
 
 namespace UlernGame.Model
 {
-    public class AmmunitionCrate : Boosters
+    public class AmmunitionCrate : Item
     {
         public const int ammoCount = 15;
         

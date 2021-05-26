@@ -1,6 +1,6 @@
 ﻿namespace Outside.Model
 {
-    public class Key : Boosters
+    public class Key : Item
     {
         public Key(int x, int y)
         {

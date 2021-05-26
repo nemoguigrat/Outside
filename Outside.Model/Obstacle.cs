@@ -6,8 +6,8 @@ namespace UlernGame.Model
     {
         public Obstacle()
         {
-            Width = 80;
-            Height = 80;
+            Width = MapCreator.TileSize;
+            Height = MapCreator.TileSize;
         }
     }
 }

@@ -16,10 +16,7 @@ namespace UlernGame.Model
 
         public void OpenClose()
         {
-            if (!isOpen)
-                isOpen = true;
-            else
-                isOpen = false;
+            isOpen = !isOpen;
         }
     }
 }

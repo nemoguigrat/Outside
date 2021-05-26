@@ -24,31 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7612168-9f11-418c-b1fb-1225f5922386" name="Default Changelist" comment="Готовый дизайн двух меню">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/AmmunitionCrate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/AmmunitionCrate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Boosters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Key.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Key.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/MapCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/MapCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/MapPoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Medkit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Medkit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Objects.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Obstacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Outside.Model.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Outside.Model.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Thorn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Fonts/Agency.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/GameForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/GameForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/GameOverForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/GameOverForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/MenuForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/MenuForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Outside.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Outside.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/View/CustomFonts.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/View/Painter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/View/Painter.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d7612168-9f11-418c-b1fb-1225f5922386" name="Default Changelist" comment="Рефактор" />
     <list id="47ea1343-5082-4d6b-ab6c-4606c3e6e58b" name="Add images" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +219,7 @@
       <workItem from="1621925271422" duration="4915000" />
       <workItem from="1622023756259" duration="3163000" />
       <workItem from="1622027210667" duration="4175000" />
-      <workItem from="1622054152922" duration="5081000" />
+      <workItem from="1622054152922" duration="5514000" />
     </task>
     <task id="LOCAL-00001" summary="Create project">
       <created>1616952649320</created>
@@ -371,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621930239198</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Рефактор">
+      <created>1622059489729</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622059489729</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,7 +394,8 @@
     <MESSAGE value="Экраны" />
     <MESSAGE value="Экран меню" />
     <MESSAGE value="Готовый дизайн двух меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="Готовый дизайн двух меню" />
+    <MESSAGE value="Рефактор" />
+    <option name="LAST_COMMIT_MESSAGE" value="Рефактор" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618896344272">
@@ -430,22 +414,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="339" key="AddNewResourceElement/0.0.1536.824@0.0.1536.824" timestamp="1618896002927" />
-    <state width="1493" height="85" key="GridCell.Tab.0.bottom" timestamp="1622059202440">
+    <state width="1493" height="85" key="GridCell.Tab.0.bottom" timestamp="1622059285360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="85" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622059202440" />
-    <state width="1493" height="85" key="GridCell.Tab.0.center" timestamp="1622059202438">
+    <state width="1493" height="85" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1622059285360" />
+    <state width="1493" height="85" key="GridCell.Tab.0.center" timestamp="1622059285359">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="85" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622059202438" />
-    <state width="1493" height="85" key="GridCell.Tab.0.left" timestamp="1622059202438">
+    <state width="1493" height="85" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1622059285359" />
+    <state width="1493" height="85" key="GridCell.Tab.0.left" timestamp="1622059285359">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="85" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622059202438" />
-    <state width="1493" height="85" key="GridCell.Tab.0.right" timestamp="1622059202438">
+    <state width="1493" height="85" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1622059285359" />
+    <state width="1493" height="85" key="GridCell.Tab.0.right" timestamp="1622059285360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="85" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622059202438" />
+    <state width="1493" height="85" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1622059285360" />
     <state width="1493" height="225" key="GridCell.Tab.1.bottom" timestamp="1622054742577">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -530,10 +514,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="VCS.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1618897931251" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1621930246913">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1622059497707">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621930246913" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622059497707" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621801217579">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

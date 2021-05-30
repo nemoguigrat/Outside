@@ -34,9 +34,16 @@ namespace Outside.Model
         public void Reload()
         {
             var reload = FullMagazine - Magazine;
-            if (reload > 0 && Ammunition - reload >= 0)
+            if (reload >= Ammunition)
+            {
+                Magazine += Ammunition;
+                Ammunition = 0;
+            }
+            else
+            {
+                Magazine += reload;
                 Ammunition -= reload;
-            Magazine += reload;
+            }
         }
 
         public void ReserveDamage(int damage)

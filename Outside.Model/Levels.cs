@@ -16,15 +16,15 @@ nwwnwnwnwwwnwnwn
 nnnnwnnnnnnnnnnn";
 
         public const string Level2 = @"
-nnnwwnwwnnnnlwnn
-nwnnwnnnnwnwwwnn
-nwnwwwwwwwnnnnnn
-nwnnnwnnnnnnwnwn
-nwnwndnnnnwnwwwn
-nwnnnnnnnnnnnnnn
-nwnnwnwnwnwnwwwn
-nwwnwnwnwwwnwnwn
-nnnnwnnnnnnnnnnn";
+wwwnnwnnnnnnwwwn
+wnwwnnnwwwwnwnwn
+nnnwnnnnwnnnwwwn
+wnwwnwwwwnnnwnnn
+nnwnnnwnnnnwwnnn
+wnwwwwnnnnndnnwn
+nnnnnwwwnnwwwnww
+wnwwnnwnnnnnwnnw
+lnwnnndnnnwwwwww";
 
         public const string Level3 = @"
 nnnwwnwwnnnnlwnn

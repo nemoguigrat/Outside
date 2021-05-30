@@ -10,9 +10,9 @@ namespace Outside.Model
         public const int Damage = 20;
         private const int Speed = 2;
         private readonly Game gameModel;
+        private Point deltas;
+        private Point target;
         public Direction Direction { get; private set; }
-        private Point Deltas { get; set; }
-        private Point Target { get; set; }
 
         public Monster(int x, int y, Game gameModel)
         {
@@ -30,20 +30,20 @@ namespace Outside.Model
 
         public void Move()
         {
-            if (X == Target.X * MapCreator.TileSize && Y == Target.Y * MapCreator.TileSize) return;
-            X += Speed * Deltas.X;
-            Y += Speed * Deltas.Y;
+            if (X == target.X * MapCreator.TileSize && Y == target.Y * MapCreator.TileSize) return;
+            X += Speed * deltas.X;
+            Y += Speed * deltas.Y;
         }
 
         public void FindTarget()
         {
-            Target = GetNextPos();
-            Deltas = new Point(Math.Sign(Target.X - X / MapCreator.TileSize),
-                Math.Sign(Target.Y - Y / MapCreator.TileSize));
-            if (Deltas.X == 0)
-                Direction = Deltas.Y > 0 ? Direction.Down : Direction.Up;
-            if (Deltas.Y == 0)
-                Direction = Deltas.X > 0 ? Direction.Right : Direction.Left;
+            target = GetNextPos();
+            deltas = new Point(Math.Sign(target.X - X / MapCreator.TileSize),
+                Math.Sign(target.Y - Y / MapCreator.TileSize));
+            if (deltas.X == 0)
+                Direction = deltas.Y > 0 ? Direction.Down : Direction.Up;
+            if (deltas.Y == 0)
+                Direction = deltas.X > 0 ? Direction.Right : Direction.Left;
         }
 
 

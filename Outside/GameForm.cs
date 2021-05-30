@@ -28,35 +28,34 @@ namespace Outside
             Location = location;
             // Создание игры
             Game = new Game(level);
-            Game.StartGame();
             //Запуск таймеров
             MainTimer = new Timer();
             MainTimer.Interval = 20;
             MainTimer.Tick += (sender, args) => TimerTick();
             MainTimer.Start();
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
-            SetTimer(1000, () => Game.SpawnMonsters()); //таймер спавна монстров 
+            SetTimer(5000, () =>
+            {
+                if (Game.Monsters.Count < 30) Game.SpawnMonsters();   //таймер спавна монстров 
+            }); 
             SetTimer(1500, MonsterMovement); // обновление маршрута и движение монстра
             //Отрисовка
             AddControls();
             Painter = new Painter(Game);
             Paint += (sender, args) => Painter.Paint(args.Graphics);
-        }
-
-        protected override void OnKeyDown(KeyEventArgs key)
-        {
-            Game.PlayerMoveDirection(key.KeyData);
-        }
-
-        protected override void OnKeyUp(KeyEventArgs key)
-        {
-            Game.PlayerAction(key.KeyData);
+            //Контроллер??
+            KeyUp += (sender, args) => Game.PlayerAction(args.KeyData);
+            KeyDown += (sender, args) => Game.PlayerMoveDirection(args.KeyData);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            var form = new GameOverForm(Location);
-            form.Show();
+            if (Game.Player.Alive && !Game.GameOver)
+                new GameOverForm(Location, "[Неужели вы решили сдаться?]").Show();
+            else if (!Game.Player.Alive)
+                new GameOverForm(Location, "[Вас поглотила тьма...]").Show();
+            else
+                new GameOverForm(Location, "[В этот раз вы смогли спастись!]").Show();
         }
 
         private void AddControls()
@@ -94,6 +93,7 @@ namespace Outside
             if (Game.Bullets.Count > 0)
                 Game.BulletCollision();
             Game.CheckCollisionWithItems();
+            Game.KillMonstersInDoor();
             if (Controls.Count > 0)
                 Controls[0].Text = $"{Game.Player.Magazine} / {Game.Player.Ammunition}";
             Invalidate();

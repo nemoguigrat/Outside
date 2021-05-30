@@ -25,24 +25,24 @@ namespace Outside
             Bullets = new List<Bullet>();
             Items = new List<Item>();
             Deltas = FindDeltas();
-        }
-
-        public void StartGame()
-        {
-            Player = new Player(8 * MapCreator.TileSize + 15, 3 * MapCreator.TileSize + 15);
+            SpawnPlayer();
             SpawnKey();
             SpawnMonsters();
         }
-
+        
         public void SpawnMonsters()
         {
             var rnd = new Random();
-            var x = rnd.Next(MapCreator.MapWidth - 1);
-            var y = rnd.Next(MapCreator.MapHeight - 1);
-            if (Map[x, y] == null &&
-                (x > Player.X / MapCreator.TileSize + 2 || x < Player.X / MapCreator.TileSize - 2) &&
-                (y > Player.Y / MapCreator.TileSize + 2 || y < Player.Y / MapCreator.TileSize - 2))
-                Monsters.Add(new Monster(x * MapCreator.TileSize, y * MapCreator.TileSize, this));
+            var monstersCount = Monsters.Count;
+            while (Monsters.Count != monstersCount + 1)
+            {
+                var x = rnd.Next(MapCreator.MapWidth - 1);
+                var y = rnd.Next(MapCreator.MapHeight - 1);
+                if (Map[x, y] == null &&
+                    (x > Player.X / MapCreator.TileSize + 2 || x < Player.X / MapCreator.TileSize - 2) &&
+                    (y > Player.Y / MapCreator.TileSize + 2 || y < Player.Y / MapCreator.TileSize - 2))
+                    Monsters.Add(new Monster(x * MapCreator.TileSize, y * MapCreator.TileSize, this));
+            }
         }
 
 
@@ -91,6 +91,16 @@ namespace Outside
                     monsterToDamage.Die();
                     Bullets.Remove(Bullets[i]);
                 }
+            }
+        }
+
+        public void KillMonstersInDoor()
+        {
+            for (var i = 0; i < Monsters.Count; i++)
+            {
+                if (Map[Monsters[i].X / MapCreator.TileSize, Monsters[i].Y / MapCreator.TileSize] is Door door &&
+                    !door.IsOpen)
+                    Monsters[i].Die();
             }
         }
 
@@ -151,11 +161,27 @@ namespace Outside
             {
                 x = rnd.Next(MapCreator.MapWidth - 1);
                 y = rnd.Next(MapCreator.MapHeight - 1);
-                if (Map[x, y] == null)
+                if (Map[x, y] == null && x != Player.X / MapCreator.TileSize && y != Player.Y / MapCreator.TileSize)
                     break;
             }
 
             Items.Add(new Key(x * MapCreator.TileSize + 15, y * MapCreator.TileSize + 15));
+        }
+        
+        private void SpawnPlayer()
+        {
+            var rnd = new Random();
+            int x;
+            int y;
+            while (true)
+            {
+                x = rnd.Next(MapCreator.MapWidth - 1);
+                y = rnd.Next(MapCreator.MapHeight - 1);
+                if (Map[x, y] == null)
+                    break;
+            }
+
+            Player = new Player(x * MapCreator.TileSize + 15, y * MapCreator.TileSize + 15);
         }
 
         private Monster CheckCollisionWithBullet(Bullet bullet)
@@ -174,7 +200,7 @@ namespace Outside
         {
             var pos = new Point(Player.X / MapCreator.TileSize, Player.Y / MapCreator.TileSize);
             var current = new Point(pos.X + Deltas[Player.Direction].X, pos.Y + Deltas[Player.Direction].Y);
-            if (current.X <= MapCreator.MapWidth && current.X >= 0 && current.Y <= MapCreator.MapHeight &&
+            if (current.X < MapCreator.MapWidth && current.X >= 0 && current.Y < MapCreator.MapHeight &&
                 current.Y >= 0 &&
                 Map[current.X, current.Y] is Door door)
                 if (!door.IsLocked)

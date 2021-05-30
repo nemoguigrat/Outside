@@ -51,7 +51,6 @@
         <Compile Include="MapCreator.cs" />
         <Compile Include="Medkit.cs" />
         <Compile Include="Monster.cs" />
-        <Compile Include="Obstacle.cs" />
         <Compile Include="Player.cs" />
         <Compile Include="Direction.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,7 +23,7 @@ namespace Outside.View
             DrawMonster(graphic);
             DrawBullets(graphic);
             DrawBoosters(graphic);
-            // DrawFlashLight(graphic);
+            DrawFlashLight(graphic);
             graphic.FillRectangle(Brushes.PaleGreen,
                 new Rectangle(20, 20, Game.Player.Heals * 5, 20));
             if (Game.Player.HaveKey)

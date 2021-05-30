@@ -2,7 +2,7 @@
 
 namespace Outside.Model
 {
-    public class Door : Obstacle
+    public class Door : GameObject
     {
         public bool IsOpen { get; private set; }
         public bool IsLocked { get; }
@@ -12,6 +12,8 @@ namespace Outside.Model
             X = x;
             Y = y;
             IsLocked = locked;
+            Width = MapCreator.TileSize;
+            Height = MapCreator.TileSize;
         }
 
         public void OpenClose()

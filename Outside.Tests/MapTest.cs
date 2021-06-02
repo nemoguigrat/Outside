@@ -20,10 +20,10 @@ nwnwwwwwwnhnnnnn
 nwnnwnwnwnhnwwwn
 nwwnwnwnwwwnwnwn
 nnnnwnnnnnnnnnnn";
-        [TestCase(Levels.Level1, "1")]
-        [TestCase(Levels.Level2, "2")]
-        [TestCase(Levels.Level3, "3")]
-        [TestCase(Levels.Level4, "4")]
+        [TestCase(Levels.Dungeon, "1")]
+        [TestCase(Levels.Chaos, "2")]
+        [TestCase(Levels.Corridors, "3")]
+        [TestCase(Levels.Prison, "4")]
         public void PossibleToFinish(string level, string name)
         {
             var game = new Game(level);
@@ -41,10 +41,10 @@ nnnnwnnnnnnnnnnn";
                 Assert.Pass();
         }
         
-        [TestCase(Levels.Level1, "1")]
-        [TestCase(Levels.Level2, "2")]
-        [TestCase(Levels.Level3, "3")]
-        [TestCase(Levels.Level4, "4")]
+        [TestCase(Levels.Dungeon, "1")]
+        [TestCase(Levels.Chaos, "2")]
+        [TestCase(Levels.Corridors, "3")]
+        [TestCase(Levels.Prison, "4")]
         public void AllObjectsSpawned(string level, string name)
         {
             var game = new Game(level);

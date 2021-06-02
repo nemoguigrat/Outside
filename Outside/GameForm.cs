@@ -18,6 +18,7 @@ namespace Outside
         private Game Game { get; }
         private Painter Painter { get; }
         private Timer MainTimer { get; }
+        private int FlashlightRadius { get; set; }
 
         public GameForm(Point location, string level)
         {
@@ -28,24 +29,23 @@ namespace Outside
             Location = location;
             // Создание игры
             Game = new Game(level);
+            FlashlightRadius = 220;
             //Запуск таймеров
             MainTimer = new Timer();
             MainTimer.Interval = 20;
             MainTimer.Tick += (sender, args) => TimerTick();
             MainTimer.Start();
             SetTimer(500, DamageTimerTick); //таймер урона по монстрам 
+            SetTimer(1200, () => FlashlightRadius--);
             SetTimer(5000, () =>
             {
-                if (Game.Monsters.Count < 30) Game.SpawnMonsters();   //таймер спавна монстров 
+                if (Game.Monsters.Count < 20) Game.SpawnMonsters();   //таймер спавна монстров 
             }); 
-            SetTimer(1500, MonsterMovement); // обновление маршрута и движение монстра
+            SetTimer(1420, MonsterMovement); // обновление маршрута и движение монстра
             //Отрисовка
             AddControls();
             Painter = new Painter(Game);
-            Paint += (sender, args) => Painter.Paint(args.Graphics);
-            //Контроллер??
-            KeyUp += (sender, args) => Game.PlayerAction(args.KeyData);
-            KeyDown += (sender, args) => Game.PlayerMoveDirection(args.KeyData);
+            Paint += (sender, args) => Painter.Paint(args.Graphics, FlashlightRadius);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -56,6 +56,16 @@ namespace Outside
                 new GameOverForm(Location, "[Вас поглотила тьма...]").Show();
             else
                 new GameOverForm(Location, "[В этот раз вы смогли спастись!]").Show();
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            Game.PlayerAction(e.KeyData);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            Game.PlayerMove(e.KeyData);
         }
 
         private void AddControls()
@@ -71,7 +81,7 @@ namespace Outside
         private void DamageTimerTick()
         {
             if (Game.CheckCollisionWithEnemy())
-                Game.Player.ReserveDamage(Monster.Damage);
+                Game.Player.ReceiveDamage(Monster.Damage);
         }
 
         private void MonsterMovement()
@@ -81,6 +91,8 @@ namespace Outside
 
         private void TimerTick()
         {
+            if (FlashlightRadius < -4)
+                Game.Player.ReceiveDamage(100);
             if (Game.GameOver || !Game.Player.Alive)
             {
                 MainTimer.Stop();
@@ -89,7 +101,6 @@ namespace Outside
 
             Game.Bullets.ForEach(x => x.Move());
             Game.Monsters.ForEach(x => x.Move());
-
             if (Game.Bullets.Count > 0)
                 Game.BulletCollision();
             Game.CheckCollisionWithItems();

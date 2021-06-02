@@ -29,13 +29,14 @@ namespace Outside
 
             startButton.Click += (sender, args) =>
             {
-                new GameForm(Location, Levels.Level1).Show();
+                new GameForm(Location, Levels.Dungeon).Show();
                 Hide();
             };
 
             tutorButton.Click += (sender, args) => MessageBox.Show(
                 @"Задача:
-    Найти ключ и дверь, к которой он подходит и выбраться из замка.
+    Найти ключ и дверь, к которой он подходит и выбраться из замка, 
+        но торопитесь, иначе тьма поглотит вас.
 
 Управление:
     W,A,S,D - Передвижение 

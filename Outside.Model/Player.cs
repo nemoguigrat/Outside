@@ -17,7 +17,6 @@ namespace Outside.Model
         public int Heals { get; private set; }
         public bool HaveKey { get; set; }
         public bool Alive { get; private set; }
-
         public Player(int x, int y)
         {
             Heals = MaxHeals;
@@ -46,7 +45,7 @@ namespace Outside.Model
             }
         }
 
-        public void ReserveDamage(int damage)
+        public void ReceiveDamage(int damage)
         {
             Heals -= damage;
             if (Heals <= 0)

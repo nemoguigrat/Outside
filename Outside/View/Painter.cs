@@ -2,7 +2,10 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Windows.Media;
 using Outside.Model;
+using Brushes = System.Drawing.Brushes;
+using Color = System.Drawing.Color;
 
 namespace Outside.View
 {
@@ -16,14 +19,14 @@ namespace Outside.View
             Game = game;
         }
 
-        public void Paint(Graphics graphic)
+        public void Paint(Graphics graphic, int flashlightRadius)
         {
             DrawMap(graphic);
             DrawPlayer(graphic);
             DrawMonster(graphic);
             DrawBullets(graphic);
             DrawBoosters(graphic);
-            DrawFlashLight(graphic);
+            DrawFlashLight(graphic, flashlightRadius);
             graphic.FillRectangle(Brushes.PaleGreen,
                 new Rectangle(20, 20, Game.Player.Heals * 5, 20));
             if (Game.Player.HaveKey)
@@ -39,7 +42,7 @@ namespace Outside.View
                 else if (e is Door && (e as Door).IsLocked)
                     gr.DrawImage(sprites.LockedDoor, e.X, e.Y);
                 else if (e is Door && (e as Door).IsOpen)
-                    gr.DrawImage(sprites.OpenDoor, e.X, e.Y);
+                    gr.DrawImage(sprites.OpenDoorV, e.X, e.Y);
                 else if (e is Door)
                     gr.DrawImage(sprites.ClosedDoor, e.X, e.Y);
             }
@@ -79,10 +82,10 @@ namespace Outside.View
             }
         }
 
-        private void DrawFlashLight(Graphics gr)
+        private void DrawFlashLight(Graphics gr, int radius)
         {
             var random = new Random();
-            var size = 200 + random.Next(-4, 4);
+            var size = radius + random.Next(-4, 4);
             var path = new GraphicsPath();
 
             path.AddEllipse(Game.Player.X - (size - Game.Player.Width) / 2,

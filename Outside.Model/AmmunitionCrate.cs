@@ -5,7 +5,7 @@ namespace Outside.Model
 {
     public class AmmunitionCrate : Item
     {
-        public const int AmmoCount = 15;
+        public const int AmmoCount = 5;
 
         public AmmunitionCrate(int x, int y)
         {

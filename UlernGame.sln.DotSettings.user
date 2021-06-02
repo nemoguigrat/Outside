@@ -3,6 +3,13 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MapTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.GameModelTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MonsterTest.MonsterBulletCollision&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MonsterTest.MonsterMovementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MonsterTest.MonsterDamageTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MonsterTest.MonsterDieInDoor&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.PlayerTest.PlayerMovementTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.PlayerTest.PlayerDirectionTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0DB413DE-F154-4F04-9518-B364EB0680F8::.NETFramework,Version=v4.8::Outside.Tests.MonsterTest.ReceiveDamageFromMonster&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Outside_002FMyForm/@EntryIndexedValue">False</s:Boolean>

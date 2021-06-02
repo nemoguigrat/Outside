@@ -26,6 +26,7 @@ namespace Outside
             Items = new List<Item>();
             Deltas = FindDeltas();
             SpawnPlayer();
+            SpawnPlayer();
             SpawnKey();
             SpawnMonsters();
         }
@@ -104,7 +105,7 @@ namespace Outside
             }
         }
 
-        public void PlayerMoveDirection(Keys key)
+        public void PlayerMove(Keys key)
         {
             switch (key)
             {

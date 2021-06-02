@@ -5,14 +5,14 @@ namespace Outside.Controller
 {
     public static class MenuDesign
     {
-        public static Button MakeButton(Point location, string text)
+        public static Button MakeButton(Point location, string text, int fontSize=26, double buttonSize=1)
         {
             return new Button
             {
                 Text = text,
-                Font = new Font(FontFamily.GenericMonospace, 26, FontStyle.Bold),
+                Font = new Font(FontFamily.GenericMonospace, fontSize, FontStyle.Bold),
                 Location = location,
-                Size = new Size(260, 60),
+                Size = new Size((int) (260 * buttonSize), (int) (60 * buttonSize)),
                 ForeColor = Color.Black,
                 BackColor = Color.White
             };

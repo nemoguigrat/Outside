@@ -11,10 +11,12 @@ namespace Outside.View
         public Image Wall { get; }
         public Image Medkit { get; }
         public Image AmmunitionCrate { get; }
-        public Image OpenDoor { get; }
+        public Image OpenDoorV { get; }
         public Image ClosedDoor { get; }
         public Image LockedDoor { get; }
         public Image Key { get; }
+        public Image Battery { get; }
+        public Image OpenDoorH { get; }
 
         public Sprites()
         {
@@ -23,10 +25,12 @@ namespace Outside.View
             Wall = LoadImage("wall");
             Medkit = LoadImage("medkit");
             AmmunitionCrate = LoadImage("ammo");
-            OpenDoor = LoadImage("open_door");
+            OpenDoorV = LoadImage("open_door_v");
+            OpenDoorH = LoadImage("open_door_h");
             ClosedDoor = LoadImage("closed_door");
             LockedDoor = LoadImage("final_door");
             Key = LoadImage("key");
+            Battery = LoadImage("battery");
         }
 
         private Dictionary<string, Image> LoadImagesEntity(string file)

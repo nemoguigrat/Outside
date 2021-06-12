@@ -10,26 +10,8 @@ namespace Outside.Model
         public Bullet(Player player)
         {
             Direction = player.Direction;
-            switch (Direction)
-            {
-                case Direction.Down:
-                    X = player.X + player.Width / 2 - 12;
-                    Y = player.Y + player.Height / 2 + 12;
-                    break;
-                case Direction.Up:
-                    X = player.X + player.Width / 2 + 8;
-                    Y = player.Y + player.Height / 2 - 10;
-                    break;
-                case Direction.Left:
-                    X = player.X + player.Width / 2 - 15;
-                    Y = player.Y + player.Height / 2 - 12;
-                    break;
-                case Direction.Right:
-                    X = player.X + player.Width / 2 + 12;
-                    Y = player.Y + player.Height / 2 + 10;
-                    break;
-            }
-               
+            X = player.X + player.Width / 2;
+            Y = player.Y + player.Height / 2;
         }
 
         public void Move()

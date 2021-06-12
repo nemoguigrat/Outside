@@ -24,20 +24,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7612168-9f11-418c-b1fb-1225f5922386" name="Default Changelist" comment="Тесты для карты и фикс багов">
-      <change afterPath="$PROJECT_DIR$/Outside/Resources/icon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="d7612168-9f11-418c-b1fb-1225f5922386" name="Default Changelist" comment="Final">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UlernGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside.Model/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/GameForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/GameForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/GameOverForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/GameOverForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/MenuForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/MenuForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Outside.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/Outside.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Resources/battery.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Sound/CloseDoor.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Sound/OpenDoor.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/Sound/Shoot.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Outside/View/Sprites.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside/View/Sprites.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Outside.Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Outside.Model/Player.cs" afterDir="false" />
     </list>
     <list id="47ea1343-5082-4d6b-ab6c-4606c3e6e58b" name="Add images" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,7 +111,6 @@
         <option value="$PROJECT_DIR$/Outside.Tests/ItemsTest.cs" />
         <option value="$PROJECT_DIR$/Outside.Model/Game.cs" />
         <option value="$PROJECT_DIR$/Outside.Model/Levels.cs" />
-        <option value="$PROJECT_DIR$/Outside.Model/Player.cs" />
         <option value="$PROJECT_DIR$/Outside.Tests/MonsterTest.cs" />
         <option value="$PROJECT_DIR$/Outside.Tests/PlayerTest.cs" />
         <option value="$PROJECT_DIR$/Outside/View/Sound.cs" />
@@ -133,6 +121,7 @@
         <option value="$PROJECT_DIR$/Outside/View/Painter.cs" />
         <option value="$PROJECT_DIR$/Outside/View/Sprites.cs" />
         <option value="$PROJECT_DIR$/Outside.Model/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Outside.Model/Player.cs" />
       </list>
     </option>
   </component>
@@ -253,7 +242,8 @@
       <workItem from="1623313770752" duration="143000" />
       <workItem from="1623395846077" duration="9241000" />
       <workItem from="1623476650387" duration="4426000" />
-      <workItem from="1623482425832" duration="957000" />
+      <workItem from="1623482425832" duration="1041000" />
+      <workItem from="1623483509331" duration="1791000" />
     </task>
     <task id="LOCAL-00001" summary="Create project">
       <created>1616952649320</created>
@@ -409,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622382344498</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Final">
+      <created>1623483461285</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623483461285</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +450,8 @@
     <MESSAGE value="Странная штука" />
     <MESSAGE value="Рефакторинг и фикс багов" />
     <MESSAGE value="Тесты для карты и фикс багов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Тесты для карты и фикс багов" />
+    <MESSAGE value="Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618896344272">
@@ -472,22 +470,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="339" key="AddNewResourceElement/0.0.1536.824@0.0.1536.824" timestamp="1618896002927" />
-    <state width="1493" height="136" key="GridCell.Tab.0.bottom" timestamp="1623483394331">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom" timestamp="1623489162160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="136" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623483394331" />
-    <state width="1493" height="136" key="GridCell.Tab.0.center" timestamp="1623483394331">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623489162160" />
+    <state width="1493" height="136" key="GridCell.Tab.0.center" timestamp="1623489162160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="136" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623483394331" />
-    <state width="1493" height="136" key="GridCell.Tab.0.left" timestamp="1623483394331">
+    <state width="1493" height="136" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623489162160" />
+    <state width="1493" height="136" key="GridCell.Tab.0.left" timestamp="1623489162159">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="136" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623483394331" />
-    <state width="1493" height="136" key="GridCell.Tab.0.right" timestamp="1623483394331">
+    <state width="1493" height="136" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623489162159" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right" timestamp="1623489162160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="136" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623483394331" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623489162160" />
     <state width="1493" height="314" key="GridCell.Tab.1.bottom" timestamp="1623445593509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -572,10 +570,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="VCS.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1623479315993" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1622061902197">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1623483466794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622061902197" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1623483466794" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621801217579">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

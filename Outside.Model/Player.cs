@@ -9,7 +9,7 @@ namespace Outside.Model
         private const int MaxAmmunition = 25;
         private const int FullMagazine = 10;
         private const int MaxHeals = 100;
-        public const int Speed = 5;
+        public const int Speed = 7;
         public int Ammunition { get; private set; }
         public int Magazine { get; private set; }
         public Direction Direction { get; private set; }

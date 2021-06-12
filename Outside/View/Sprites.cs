@@ -30,7 +30,6 @@ namespace Outside.View
             ClosedDoor = LoadImage("closed_door");
             LockedDoor = LoadImage("final_door");
             Key = LoadImage("key");
-            Battery = LoadImage("battery");
         }
 
         private Dictionary<string, Image> LoadImagesEntity(string file)

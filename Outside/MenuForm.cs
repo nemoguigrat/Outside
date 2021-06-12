@@ -13,7 +13,7 @@ namespace Outside
             DoubleBuffered = true;
             ClientSize = new Size(1280, 720);
             BackColor = Color.Black;
-
+            Icon = new Icon("Resources/icon.ico");
             AddControls();
         }
 

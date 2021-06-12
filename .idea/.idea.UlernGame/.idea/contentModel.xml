@@ -25,9 +25,9 @@
         </e>
         <e p="Resources" t="Include">
           <e p="ammo.png" t="Include" />
-          <e p="battery.png" t="Include" />
           <e p="closed_door.png" t="Include" />
           <e p="final_door.png" t="Include" />
+          <e p="icon.ico" t="Include" />
           <e p="key.png" t="Include" />
           <e p="medkit.png" t="Include" />
           <e p="open_door_h.png" t="Include" />
@@ -41,11 +41,6 @@
           <e p="zombieLeft.png" t="Include" />
           <e p="zombieRight.png" t="Include" />
           <e p="zombieUp.png" t="Include" />
-        </e>
-        <e p="Sound" t="Include">
-          <e p="CloseDoor.wav" t="Include" />
-          <e p="OpenDoor.wav" t="Include" />
-          <e p="Shoot.wav" t="Include" />
         </e>
         <e p="View" t="Include">
           <e p="Painter.cs" t="Include" />

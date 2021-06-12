@@ -19,6 +19,7 @@ namespace Outside
             ClientSize = new Size(1280, 720);
             BackColor = Color.Black;
             Location = location;
+            Icon = new Icon("Resources/icon.ico");
             LevelsDict = Levels.MakeDict();
             CurrentLevel = LevelsDict.Values.First();
             FormClosing += (sender, args) => Application.Exit();

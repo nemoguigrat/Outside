@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using Outside.Model;
 using Outside.View;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Outside
 {
@@ -19,7 +13,7 @@ namespace Outside
         private Painter Painter { get; }
         private Timer MainTimer { get; }
         private int FlashlightRadius { get; set; }
-
+        
         public GameForm(Point location, string level)
         {
             //Параметры окна
@@ -27,6 +21,7 @@ namespace Outside
             ClientSize = new Size(1280, 720);
             BackColor = Color.Gray;
             Location = location;
+            Icon = new Icon("Resources/icon.ico");
             // Создание игры
             Game = new Game(level);
             FlashlightRadius = 220;

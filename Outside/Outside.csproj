@@ -46,6 +46,7 @@
         <Reference Include="System.Net.Http" />
         <Reference Include="System.Windows.Forms" />
         <Reference Include="System.Xml" />
+        <Reference Include="WindowsBase" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Controls\MenuDesign.cs" />
@@ -142,25 +143,12 @@
       </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
-      <EmbeddedResource Include="Sound\CloseDoor.wav">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Sound\OpenDoor.wav">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Include="Sound\Shoot.wav">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-      <EmbeddedResource Include="Resources\battery.png">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
       <EmbeddedResource Include="Resources\open_door_h.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\icon.ico">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>
